@@ -57,5 +57,6 @@ else
 	            <p>&copy; Connor Smith and Kayla Holcomb 2016</p>
 	        </footer>
 	    </div>
+	    <canvas id="myCanvas" style="border:1px solid #000000;"/>
 	</body>
 </html>
