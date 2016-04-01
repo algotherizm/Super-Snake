@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$link = new mysqli("localhost","root","","game");
+$link = new mysqli("localhost","sMove","","game");
 if ($link->connect_errno) {
     printf("Connect failed: %s\n", $link->connect_error);
     exit();
