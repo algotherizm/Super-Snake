@@ -18,25 +18,6 @@ if(isset($_SESSION['user'])){
 	}
 }
 
-//read in text file if the book table is empty
-//help with reading in text file to database from http://forums.phpfreaks.com/topic/184172-inserting-data-into-a-mysql-table-from-a-text-file-using-php/
-$result = $link->query("SELECT count(title) FROM book");
-$row = $result->fetch_assoc();
-if($row["count(title)"] == 0)
-{
-	//file to string from http://php.net/manual/en/function.file-get-contents.php
-	$file = file_get_contents("book_list.txt");
-	$list = explode(";", $file);
-	$count = count($list);
-	$i=0;
-	while($i<$count-1)
-	{
-  		$line= explode(",", $list[$i]);
-  		$sql = $link->query("INSERT INTO book(isbn, title, author, category, summary) 
-  			VALUES ('".trim(preg_replace('/\s+/', ' ', $line[0]))."', '".$line[1]."', '".$line[2]."', '".$line[3]."', '".$line[4]."') ");
-  		$i++;
-  	}
-}
 $action="";
 if(isset($_REQUEST["action"])){
 	$action = $_REQUEST["action"];
