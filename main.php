@@ -34,14 +34,28 @@ else
 
 ?>
 
-<html>
-
+<html lang="en">
 	<head>
-
+	    <title>Super-Snake</title>
+	    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+	    <link href="../Super-Snake/css/main.css" rel="stylesheet">
+	    <script>
+	    </script>
 	</head>
-
 	<body>
-
+	   <div class="myContainer">
+	        <div class="header">
+	            <nav>
+	                <ul class="main-nav nav nav-pills pull-right">
+	                    <li role="presentation"><a class="cd-signin" href="dashboard.php"> Dashboard</a></li>
+	                    <li role="presentation"><a class="cd-signin" href="logOut.php"> Sign Out</a></li>
+	                </ul>
+	            </nav>
+	            <a href="main.php"><h1 class="text-muted"><span class="glyphicon glyphicon-globe"></span> Super-Snake</h1></a>
+	        </div>
+	        <footer class="footer">
+	            <p>&copy; Connor Smith and Kayla Holcomb 2016</p>
+	        </footer>
+	    </div>
 	</body>
-
 </html>
