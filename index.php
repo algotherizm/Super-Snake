@@ -38,7 +38,7 @@ if($action == "add_user")
         $lname = htmlentities($link->real_escape_string($lname));
         $email = htmlentities($link->real_escape_string($email));
         $password = htmlentities($link->real_escape_string($password));
-        $password = crypt ($password,"Gryfindor");
+        $password = crypt ($password,"pythonAttack");
         $result = $link->query("INSERT INTO users (first_name,last_name,email,password) VALUES ('$fname', '$lname', '$email', '$password')");
 
         $loggedIn = true;
@@ -61,7 +61,7 @@ if($action == "add_user")
         
         $email = htmlentities($link->real_escape_string($email));
         $password = htmlentities($link->real_escape_string($password));
-        $password = crypt ($password,"Gryfindor");
+        $password = crypt ($password,"pythonAttack");
         $result = $link->query("SELECT password FROM users where email='$email'");
 		$row = $result->fetch_assoc();
 		if(!$result)
