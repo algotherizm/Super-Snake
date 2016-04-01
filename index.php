@@ -77,7 +77,7 @@ if($action == "add_user")
 
     }
 
-
+//Credit for modal goes to Austin Graham, including all css and code. 
 ?>
 
 <!DOCTYPE html>
