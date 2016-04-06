@@ -39,8 +39,8 @@ else
 	    <title>Super-Snake</title>
 	    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 	    <link href="../Super-Snake/css/main.css" rel="stylesheet">
-	    <link rel="stylesheet" href="../js/paperjs-v0/css/style.css">
-		<script type="text/javascript" src="../../dist/paper-full.js"></script>
+	    <link rel="stylesheet" href="../Super-Snake/js/paperjs-v0/css/style.css">
+		<script type="text/javascript" src="../Super-Snake/js/paperjs-v0/dist/paper-full.js"></script>
 		<script type="text/paperscript" canvas="canvas">
 
 			// Adapted from the following Processing example:
