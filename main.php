@@ -98,7 +98,7 @@ else
 	            <a href="main.php"><h1 class="text-muted"><span class="glyphicon glyphicon-globe"></span> Super-Snake</h1></a>
 	        </div>
 			    
-			<canvas id="canvas" resize></canvas>
+			<canvas id="canvas" resize style="border:1px solid #000000;></canvas>
 
 	        <footer class="footer">
 	            <p>&copy; Connor Smith and Kayla Holcomb 2016</p>
