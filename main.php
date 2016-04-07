@@ -40,9 +40,10 @@ else
 	    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 	    <link href="../Super-Snake/css/main.css" rel="stylesheet">
 	    <link rel="stylesheet" href="../Super-Snake/js/paperjs-v0/css/style.css">
-		<script type="text/javascript" src="../Super-Snake/js/paperjs-v0/dist/paper-full.js"></script>
+		<!--<script type="text/javascript" src="../Super-Snake/js/paperjs-v0/dist/paper-full.js"></script>-->
+		<!--<script type="text/javascript" src="../Super-Snake/js/game.js"/>-->
 		<script type="text/paperscript" canvas="canvas">
-
+		
 			// Adapted from the following Processing example:
 	        // http://processing.org/learning/topics/follow3.html
 
@@ -83,10 +84,60 @@ else
 	            path.fullySelected = false;
 	            path.strokeColor = '#e4141b';
 	        }
+	   
 
 	    </script>
+
+	    <script>
+			function game()
+			{
+	    		var canvas = document.getElementById('canvas');
+				var ctx = canvas.getContext('2d');
+				var keys = 
+				{
+					37: 'left',
+					38: 'up',
+					39: 'right',
+					40: 'down'
+				};
+				var pos = [[5,1],[4,1],[3,1],[2,1],[1,1]];
+				var direction = 'right';
+				var old_direction = 'right';
+				var block = 10;
+				for(var x=0; x<pos.length; x++)
+				{
+					var x_co = pos[x][0]*block;
+					var y_co = pos[x][1]*block;
+					ctx.beginPath();		
+					ctx.fillRect(x_co,y_co,block,block);
+					ctx.closePath();
+				}
+				window.onkeydown = function(event)
+				{
+					direction = keys[event.keyCode];
+					if(direction)
+					{
+						setWay(direction);
+						event.preventDefault();
+					}
+				}
+				function setWay(direction)
+				{
+					if(old_direction != direction)
+						old_direction = direction;
+					console.log(direction);
+				}
+			}
+
+			function drawthis()
+			{
+				var canvas = document.getElementById('canvas');
+				var ctx = canvas.getContext('2d');
+				ctx.fillRect(50,50,10,10);
+			}
+		</script>
 	</head>
-	<body>
+	<body onload="game()">
 	   <div class="myContainer">
 	        <div class="header">
 	            <nav>
@@ -98,12 +149,14 @@ else
 	            <a href="main.php"><h1 class="text-muted"><span class="glyphicon glyphicon-globe"></span> Super-Snake</h1></a>
 	        </div>
 			    
-			<canvas id="canvas" resize style="border:1px solid #000000;></canvas>
+			<canvas id="canvas" resize style="border:1px solid #000000";></canvas>
+			<a href="#" onclick="game()">Click to draw a rectangle</a><br/>
 
 	        <footer class="footer">
 	            <p>&copy; Connor Smith and Kayla Holcomb 2016</p>
 	        </footer>
+
 	    </div>
-<!-- 	    <canvas id="myCanvas" style="border:1px solid #000000;"/>
- -->	</body>
+
+	</body>
 </html>
