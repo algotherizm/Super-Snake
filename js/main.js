@@ -40,6 +40,11 @@ jQuery(document).ready(function($){
         $('.sign-in-modal').toggleClass('is-visible');
     });
 
+    endGame.on('click', function(event){
+
+        $('.end-game-modal').toggleClass('is-visible');
+    });
+
     //open sign-up form
     signUp.on('click', signup_selected);
     //open login-form form
