@@ -259,7 +259,6 @@ else
 		    					endGame = true;
 		    					location.href = "#"; //fix later
 		    					alert("Game Over. Your Score is: " + new_score);
-
 		    					notify = true;
 		    				}
 		    			}
@@ -269,9 +268,9 @@ else
 	    		function createfood()
 	    		{//math help from: http://stackoverflow.com/questions/1527803/generating-random-numbers-in-javascript-in-a-specific-range
 	    			food = [Math.round(Math.random()*(canvas.width/block)), Math.round(Math.random()*(canvas.height/block))];
-	    			if(food[0] == canvas.width/block)
+	    			if(food[0] >= canvas.width/block)
 	    				food[0] = food[0]-2;
-	    			if(food[1] == canvas.height/block)
+	    			if(food[1] >= canvas.height/block)
 	    				food[1] == food[1]-2;
 	    		}
 	    		function spawnfood()
