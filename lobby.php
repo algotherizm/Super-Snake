@@ -75,6 +75,8 @@ else
                 </nav>
                 <a href="main.php"><h1 class="text-muted"><span class="glyphicon glyphicon-globe"></span> Super-Snake</h1></a>
             </div>
+
+            <h1>Lobby: Press "Start Game" to play the best snake game ever!</h1>
                 
            <footer class="footer">
                 <p>&copy; Connor Smith and Kayla Holcomb 2016</p>
