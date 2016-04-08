@@ -154,6 +154,7 @@ else
 				{
 					if(!endGame)
 					{
+						setWay(direction);
 						var next = pos[0].slice();
 						switch(direction)
 						{
