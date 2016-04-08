@@ -219,13 +219,13 @@ else
 	    				alert("End Game");
 
 	    		}, 1000);
-	    		
+
 				draw();
 			}
 
 		</script>
 	</head>
-	<body onload="game(); gameLoop()">
+	<body onload="game()">
 	   <div class="myContainer">
 	        <div class="header">
 	            <nav>
