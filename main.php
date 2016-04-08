@@ -217,8 +217,8 @@ else
 
 		    			if (collideBody || collideWall)
 		    				endGame = true;
-		    				//call modal
-
+		    				location.href = "#modal-endGame";
+		    				
 		    		}, 1000);
 		    	}
 
