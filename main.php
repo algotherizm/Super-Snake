@@ -104,13 +104,16 @@ else
 				var direction = 'right';
 				var old_direction = 'right';
 				var block = 10;
-				for(var x=0; x<pos.length; x++)
+				function draw()
 				{
-					var x_co = pos[x][0]*block;
-					var y_co = pos[x][1]*block;
-					ctx.beginPath();		
-					ctx.fillRect(x_co,y_co,block,block);
-					ctx.closePath();
+					for(var x=0; x<pos.length; x++)
+					{
+						var x_co = pos[x][0]*block;
+						var y_co = pos[x][1]*block;
+						ctx.beginPath();		
+						ctx.fillRect(x_co,y_co,block,block);
+						ctx.closePath();
+					}
 				}
 				window.onkeydown = function(event)
 				{
@@ -126,6 +129,10 @@ else
 					if(old_direction != direction)
 						old_direction = direction;
 					console.log(direction);
+				}
+				function getOn()
+				{
+
 				}
 			}
 
