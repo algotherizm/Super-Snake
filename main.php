@@ -207,22 +207,19 @@ else
 						console.log("You bashed your head into a wall. You died.");
 				}
 
-				function gameLoop()
-		    	{
-		    		setTimeout(function () {
+				setTimeout(function () 
+				{
+	    			var canvas = document.getElementById('canvas');
 
-		    			var canvas = document.getElementById('canvas');
+	    			getOn();
 
-		    			getOn();
+	    			if (collideBody || collideWall)
+	    				endGame = true;
+	    				location.href = "#modal-endGame"; //fix later
+	    				alert("End Game");
 
-		    			if (collideBody || collideWall)
-		    				endGame = true;
-		    				location.href = "#modal-endGame"; //fix later
-		    				alert("End Game");
-
-		    		}, 1000);
-		    	}
-
+	    		}, 1000);
+	    		
 				draw();
 			}
 
