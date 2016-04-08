@@ -249,23 +249,39 @@ else
 	            </nav>
 	            <a href="main.php"><h1 class="text-muted"><span class="glyphicon glyphicon-globe"></span> Super-Snake</h1></a>
 	        </div>
+	                            <p><a id="join-button" class="btn btn-lg btn-success site-signUp" href="#" role="button">Sign Up Today!</a></p>
+
 			    
 			<canvas id="canvas" resize style="border:1px solid #000000";></canvas>
 
-	        <div id="sign-in-modal" class="sign-in-modal">
-	          	<div class="sign-in-modal-container">
-	                <div id="modal-signIn">
-	                	<form class="modal-form" name="signIn" onsubmit="return validateSignIn()" method="post" action="#">
+        <div id="sign-in-modal" class="sign-in-modal">
+          	<div class="sign-in-modal-container">
+                <ul class="modal-switcher">
+                    <li><a href="#">Sign In</a></li>
+                    <li><a href="#">New Account</a></li>
+                </ul>
+                <div id="modal-login"> <!-- log in form -->
+                	<div id="loginError" role="alert" class="alert alert-danger modal-alert alert-hide"><p>That username and password did not match our records. Please, try again.<p></div>
+                    <form class="modal-form" name="signIn" onsubmit="return validateSignIn()" method="post" action="#">
                     	<input type="hidden" name="action" value="login">
                         <p class="fieldset"><label class="modal-label">Email:</label><input required class="modal-input" id="logInEmail" name="email" type="email" placeholder="E-mail"></p>
                         <p class="fieldset"><label class="modal-label">Password:</label><input required class="modal-input" id="logInPassword" name="password" type="password"  placeholder="Password"></p>
                         <input class="modal-input" type="submit" value="Login">
                     </form>
-	                    <button type="button" class="btn btn-default">End Game</button>
-	                    <button type="button" class="btn btn-default">Return to Lobby</button>
-	                </div>
-	            </div>
-          	</div>
+                </div>
+                <div id="modal-signup"> <!-- sign up form -->
+                    <form class="modal-form" name="signUp" onsubmit="return validateSignUp()" method="post" action="#">
+                    	<input type="hidden" name="action" value="add_user">
+                        <p class="fieldset"><label class="modal-label">First Name:</label><input required class="modal-input" id="fname" name="fname" type="text" placeholder="First Name"></p>
+                        <p class="fieldset"><label class="modal-label">Last Name:</label><input required class="modal-input" id="lname" name="lname" type="text" placeholder="Last Name"></p>
+                        <p class="fieldset"><label class="modal-label">Email:</label><input required class="modal-input" id="email" name="email" type="email" placeholder="E-mail"></p>
+                        <p class="fieldset"><label class="modal-label">Password:</label><input required class="modal-input" id="password" name="password" type="password"  placeholder="Password"></p>
+                        <p class="fieldset"><label id="pass2Label" class="modal-label">Enter Password Again:</label><input required class="modal-input" id="password2" name="password2" type="password"  placeholder="Retype Password"></p>
+                        <input class="modal-input" type="submit" value="Create Account">
+                    </form>
+                </div>
+            </div>
+          </div>
 
            <footer class="footer">
 	            <p>&copy; Connor Smith and Kayla Holcomb 2016</p>
