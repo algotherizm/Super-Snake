@@ -145,7 +145,6 @@ else
 					{
 						setWay(direction);
 						getOn();
-						pos.pop();
 						document.getElementById('canvas');
 						canvas.width = canvas.width;
 						draw();
@@ -185,6 +184,7 @@ else
 								break;
 						}
 						pos.unshift(next);
+						pos.pop();
 					}
 				}
 
@@ -241,20 +241,23 @@ else
 					wall = true;
 				}
 
-				setInterval(function () 
-				{
-	    			var canvas = document.getElementById('canvas');
+				setTimeout(
+					setInterval(function () 
+					{
+		    			var canvas = document.getElementById('canvas');
 
-	    			auto();
+		    			auto();
+		    			draw();
 
-	    			if (body || wall)
-	    			{
-	    				endGame = true;
-	    				location.href = "#modal-endGame"; //fix later
-	    				alert("End Game");
-	    			}
+		    			if (body || wall)
+		    			{
+		    				endGame = true;
+		    				location.href = "#modal-endGame"; //fix later
+		    				alert("End Game");
+		    			}
 
-	    		}, 1000);
+		    		}, 2000) 
+				}, 1000);
 
 				draw();
 			}
