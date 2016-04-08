@@ -68,7 +68,7 @@ time, mark, audio, video {
   width: 100%;
   height: 50px;
   line-height: 50px;
-  background: #002500;/*#d2d8d8;*/
+  background: #111111;/*#d2d8d8;*/
   color: #809191;
 }
 .sign-in-modal-container .modal-switcher a:hover, .end-game-modal-container .modal-switcher a:hover  {
@@ -121,7 +121,7 @@ time, mark, audio, video {
 }
 .modal-form input[type=submit] {
   padding: 16px 0;
-  background: #002500;
+  background: #111111;
   color: #FFF;
   font-weight: bold;
   border: none;
