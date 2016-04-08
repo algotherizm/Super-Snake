@@ -24,7 +24,7 @@
     margin-bottom:-70px;
 }
 
-.sign-up-container {
+.sign-up-container, .end-game-container {
 
     background-color: rgba(25,25,25,.90);
     text-align: center;

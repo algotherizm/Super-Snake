@@ -17,7 +17,7 @@ time, mark, audio, video {
     vertical-align: baseline;
 }
 
-.sign-in-modal, .game-over-modal{
+.sign-in-modal, .end-game-modal{
 	position: fixed;
   	top: 0;
   	left: 0;
@@ -31,7 +31,7 @@ time, mark, audio, video {
   transition: opacity 0.3s, visibility 0.3s;
 }
 
-.sign-in-modal.is-visible, .game-over-modal.is-visible{
+.sign-in-modal.is-visible, .end-game-modal.is-visible{
   visibility: visible;
   opacity: 1;
 }
@@ -45,7 +45,7 @@ time, mark, audio, video {
 	color:black;
 }
 
-.sign-in-modal-container, .game-over-modal-container{
+.sign-in-modal-container, .end-game-modal-container{
 	position: relative;
 	width: 90%;
 	max-width: 600px;
