@@ -39,9 +39,10 @@ else
 	    <title>Super-Snake</title>
 	    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 	    <link href="../Super-Snake/css/main.css" rel="stylesheet">
+	   	<link href="../Super-Snake/css/modal.css" rel="stylesheet">
 	    <link rel="stylesheet" href="../Super-Snake/js/paperjs-v0/examples/css/style.css">
 		<!--<script type="text/javascript" src="../Super-Snake/js/paperjs-v0/dist/paper-full.js"></script>-->
-		<!--<script type="text/javascript" src="../Super-Snake/js/game.js"/>-->
+		<script type="text/javascript" src="../Super-Snake/js/main.js"/>
 		<script type="text/paperscript" canvas="canvas">
 		
 			// Adapted from the following Processing example:
@@ -88,8 +89,6 @@ else
 	   		// SNAKE MOVES AUTOMATICALLY IN SAME DIRECTION
 	   		// GAME LOOP - START AND END FUNCTION (clear canvas, redraw and auto move, timeout from last arrow key press)
 	   		// GROWTH AUTOMATICALLY
-	   		// OVERLAP KILLS OR HIT WALL
-	   		// REMAKE INDEX PAGE
 	   		
 	   		// MAIN MENU TO START NEW GAME
 	   		// OPTION TO LEAVE GAME
@@ -100,6 +99,7 @@ else
 	   		// OPTION CREATE USER PROFILE (TRACK WINS & HIGH SCORES)
 	   		// MULTIPLAYER (2+)
 	   		// LOBBY SHOWS HIGH SCORES LIST 
+	   		// MUSIC WHILE PLAYING
 
 	    </script>
 
@@ -157,27 +157,29 @@ else
 				}
 				function getOn()
 				{
-					var next = pos[0].slice();
-					switch(old_direction)
+					if(!endGame)
 					{
-						case 'left':
-							next[0] += -1;
-							break;
+						var next = pos[0].slice();
+						switch(old_direction)
+						{
+							case 'left':
+								next[0] += -1;
+								break;
 
-						case 'up':
-							next[1] += -1;
-							break;
+							case 'up':
+								next[1] += -1;
+								break;
 
-						case 'right':
-							next[0] += 1;
-							break;
+							case 'right':
+								next[0] += 1;
+								break;
 
-						case 'down':
-							next[1] += 1;
-							break;
+							case 'down':
+								next[1] += 1;
+								break;
+						}
+						pos.unshift(next);
 					}
-
-					pos.unshift(next);
 				}
 
                 function collideBody()
@@ -208,9 +210,12 @@ else
 		    		setTimeout(function () {
 
 		    			var canvas = document.getElementById('canvas');
+
 		    			getOn();
+
 		    			if (collideBody || collideWall)
 		    				endGame = true;
+		    				//call modal
 
 		    		}, 1000);
 		    	}
@@ -225,7 +230,7 @@ else
 	        <div class="header">
 	            <nav>
 	                <ul class="main-nav nav nav-pills pull-right">
-	                    <li role="presentation"><a class="cd-signin" href="dashboard.php"> Dashboard</a></li>
+	                    <li role="presentation"><a class="cd-signin" href="dashboard.php"> Lobby</a></li>
 	                    <li role="presentation"><a class="cd-signin" href="logOut.php"> Sign Out</a></li>
 	                </ul>
 	            </nav>
@@ -233,33 +238,12 @@ else
 	        </div>
 			    
 			<canvas id="canvas" resize style="border:1px solid #000000";></canvas>
-			<a href="#" onclick="game()">Click to draw a rectangle</a><br/>
 
 	        <div id="game-over-modal" class="game-over-modal">
 	          	<div class="game-over-modal-container">
-	                <ul class="modal-switcher">
-	                    <li><a href="#">Sign In</a></li>
-	                    <li><a href="#">New Account</a></li>
-	                </ul>
-	                <div id="modal-login"> <!-- log in form -->
-	                	<div id="loginError" role="alert" class="alert alert-danger modal-alert alert-hide"><p>That username and password did not match our records. Please, try again.<p></div>
-	                    <form class="modal-form" name="signIn" onsubmit="return validateSignIn()" method="post" action="#">
-	                    	<input type="hidden" name="action" value="login">
-	                        <p class="fieldset"><label class="modal-label">Email:</label><input required class="modal-input" id="logInEmail" name="email" type="email" placeholder="E-mail"></p>
-	                        <p class="fieldset"><label class="modal-label">Password:</label><input required class="modal-input" id="logInPassword" name="password" type="password"  placeholder="Password"></p>
-	                        <input class="modal-input" type="submit" value="Login">
-	                    </form>
-	                </div>
-	                <div id="modal-signup"> <!-- sign up form -->
-	                    <form class="modal-form" name="signUp" onsubmit="return validateSignUp()" method="post" action="#">
-	                    	<input type="hidden" name="action" value="add_user">
-	                        <p class="fieldset"><label class="modal-label">First Name:</label><input required class="modal-input" id="fname" name="fname" type="text" placeholder="First Name"></p>
-	                        <p class="fieldset"><label class="modal-label">Last Name:</label><input required class="modal-input" id="lname" name="lname" type="text" placeholder="Last Name"></p>
-	                        <p class="fieldset"><label class="modal-label">Email:</label><input required class="modal-input" id="email" name="email" type="email" placeholder="E-mail"></p>
-	                        <p class="fieldset"><label class="modal-label">Password:</label><input required class="modal-input" id="password" name="password" type="password"  placeholder="Password"></p>
-	                        <p class="fieldset"><label id="pass2Label" class="modal-label">Enter Password Again:</label><input required class="modal-input" id="password2" name="password2" type="password"  placeholder="Retype Password"></p>
-	                        <input class="modal-input" type="submit" value="Create Account">
-	                    </form>
+	                <div id="modal-endGame">
+	                    <button type="button" class="btn btn-default">End Game</button>
+	                    <button type="button" class="btn btn-default">Return to Lobby</button>
 	                </div>
 	            </div>
           	</div>
