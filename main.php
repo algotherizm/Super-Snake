@@ -126,6 +126,7 @@ else
 						canvas.width = canvas.width;
 						draw();
 						collideBody();
+						collideWall();
 						event.preventDefault();
 					}
 				}
@@ -168,6 +169,19 @@ else
 							console.log("You hit yourself in the head. You died.");
 					}
 				}
+				function collideWall()
+				{
+					var walls = 
+					{
+						up: 0,
+						right: canvas.width/block-1,
+						down: canvas.height/block-1,
+						left: 0
+					};
+					var head = pos[0];
+					if(head[0]>walls.right || head[0]<walls.left || head[1]<walls.up || head[1]>walls.down)
+						console.log("You bashed your head into a wall. You died.");
+				}
 				draw();
 			}
 
@@ -186,8 +200,6 @@ else
 	        </div>
 			    
 			<canvas id="canvas" resize style="border:1px solid #000000";></canvas>
-			<a href="#" onclick="game()">Click to draw a rectangle</a><br/>
-
 	        <footer class="footer">
 	            <p>&copy; Connor Smith and Kayla Holcomb 2016</p>
 	        </footer>
