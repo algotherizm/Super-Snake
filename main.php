@@ -125,6 +125,7 @@ else
 						document.getElementById('canvas');
 						canvas.width = canvas.width;
 						draw();
+						collideBody();
 						event.preventDefault();
 					}
 				}
@@ -132,7 +133,6 @@ else
 				{
 					if(old_direction != direction)
 						old_direction = direction;
-					console.log(direction);
 				}
 				function getOn()
 				{
@@ -158,6 +158,15 @@ else
 
 					pos.unshift(next);
 					pos.pop();
+				}
+				function collideBody()
+				{
+					var head = pos[0];
+					for(var a=1; a<pos.length; a++)
+					{
+						if(head[0] == pos[a][0] && head[1] == pos[a][1])
+							console.log("You hit yourself in the head. You died.");
+					}
 				}
 				draw();
 			}
