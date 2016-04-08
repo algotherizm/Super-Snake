@@ -316,7 +316,7 @@ else
         <div id="sign-in-modal" class="sign-in-modal">
           	<div class="sign-in-modal-container">
                     <button type="button" class="btn btn-default" href="#" onclick="window.location.reload(true);">New Game</button>
-                    <button type="button" class="btn btn-default" onhref="lobby.php">Return to Lobby</button>
+                    <button type="button" class="btn btn-default" onclick="window.location.assign('http://52.10.103.58/Super-Snake/lobby.php');" href="lobby.php">Return to Lobby</button>
             </div>
           </div>
 
