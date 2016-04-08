@@ -121,6 +121,10 @@ else
 					if(direction)
 					{
 						setWay(direction);
+						getOn();
+						document.getElementById('canvas');
+						canvas.width = canvas.width;
+						draw();
 						event.preventDefault();
 					}
 				}
@@ -132,8 +136,30 @@ else
 				}
 				function getOn()
 				{
+					var next = pos[0].slice();
+					switch(old_direction)
+					{
+						case 'left':
+							next[0] += -1;
+							break;
 
+						case 'up':
+							next[1] += -1;
+							break;
+
+						case 'right':
+							next[0] += 1;
+							break;
+
+						case 'down':
+							next[1] += 1;
+							break;
+					}
+
+					pos.unshift(next);
+					pos.pop();
 				}
+				draw();
 			}
 
 		</script>
