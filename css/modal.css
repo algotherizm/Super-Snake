@@ -17,7 +17,7 @@ time, mark, audio, video {
     vertical-align: baseline;
 }
 
-.sign-in-modal{
+.sign-in-modal, .game-over-modal{
 	position: fixed;
   	top: 0;
   	left: 0;
@@ -31,7 +31,7 @@ time, mark, audio, video {
   transition: opacity 0.3s, visibility 0.3s;
 }
 
-.sign-in-modal.is-visible {
+.sign-in-modal.is-visible, .game-over-modal.is-visible{
   visibility: visible;
   opacity: 1;
 }
@@ -45,7 +45,7 @@ time, mark, audio, video {
 	color:black;
 }
 
-.sign-in-modal-container{
+.sign-in-modal-container, .game-over-modal-container{
 	position: relative;
 	width: 90%;
 	max-width: 600px;
@@ -140,10 +140,10 @@ time, mark, audio, video {
   outline: none;
 }
 
-#modal-login, #modal-signup {
+#modal-login, #modal-signup, #modal-endGame{
   display: none;
 }
-#modal-login.is-selected, #modal-signup.is-selected {
+#modal-login.is-selected, #modal-signup.is-selected, #modal-endGame.is-selected{
   display: block;
 }
 
