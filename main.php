@@ -211,7 +211,7 @@ else
 				{
 	    			var canvas = document.getElementById('canvas');
 
-	    			getOn();
+	    			//getOn();
 
 	    			if (collideBody || collideWall)
 	    				endGame = true;
