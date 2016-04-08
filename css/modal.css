@@ -49,7 +49,6 @@ time, mark, audio, video {
 	position: relative;
 	width: 90%;
 	max-width: 600px;
-	background: #000000;
 	margin: 8em auto 4em;
 	border-radius: 0.25em;
 }
