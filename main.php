@@ -257,7 +257,7 @@ else
 		    				{
 		    					endGame = true;
 		    					location.href = "#"; //fix later
-		    					console.log("Game Over - You Lose");
+		    					alert("Game Over - You Lose");
 		    					notify = true;
 		    				}
 		    			}
@@ -317,12 +317,8 @@ else
         <div id="sign-in-modal" class="sign-in-modal">
           	<div class="sign-in-modal-container">
                 <div id="modal-signup"> <!-- sign up form -->
-                    <form class="modal-form" name="signIn" onsubmit="return validateSignIn()" method="post" action="#">
-                    	<input type="hidden" name="action" value="login">
-                        <p class="fieldset"><label class="modal-label">Email:</label><input required class="modal-input" id="logInEmail" name="email" type="email" placeholder="E-mail"></p>
-                        <p class="fieldset"><label class="modal-label">Password:</label><input required class="modal-input" id="logInPassword" name="password" type="password"  placeholder="Password"></p>
-                        <input class="modal-input" type="submit" value="Login">
-                    </form>
+                    <button type="button" class="btn btn-default" href="#" onclick="window.location.reload(true);">New Game</button>
+                    <button type="button" class="btn btn-default" href="lobby.php">Return to Lobby</button>
                 </div>
             </div>
           </div>
