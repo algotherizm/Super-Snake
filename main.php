@@ -225,7 +225,7 @@ else
 		    			if (body || wall)
 		    			{
 		    				endGame = true;
-		    				location.href = "#modal-signIn"; //fix later
+		    				location.href = "#site-signUp"; //fix later
 		    			}
 		    			lastMove = currentTime;
                     }
