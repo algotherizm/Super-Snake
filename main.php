@@ -87,6 +87,7 @@ else
 				var endGame = false;
 				var body = false;
 				var wall = false; 
+				var notify = false;
 				var lastMove = Date.now();
 				var food = [0,0];
 				var foodexists = false;
@@ -252,9 +253,13 @@ else
 
 		    			if (body || wall)
 		    			{
-		    				endGame = true;
-		    				location.href = "#"; //fix later
-		    				alert("Game Over - You Lose");
+		    				if(!notify)
+		    				{
+		    					endGame = true;
+		    					location.href = "#"; //fix later
+		    					console.log("Game Over - You Lose");
+		    					notify = true;
+		    				}
 		    			}
 		    			lastMove = currentTime;
 
