@@ -97,7 +97,8 @@ else
 					{
 						var x_co = pos[x][0]*block;
 						var y_co = pos[x][1]*block;
-						ctx.beginPath();		
+						ctx.beginPath();
+						ctx.fillStyle = 'black';
 						ctx.fillRect(x_co,y_co,block,block);
 						ctx.closePath();
 					}
@@ -123,22 +124,28 @@ else
 					switch(direction)
 					{
 						case 'left':
-							if(old_direction!='right'){
+							if(old_direction!='right')
 								old_direction = direction;
+							else
 								direction = old_direction;
-							}
 							break;
 						case 'right':
 							if(old_direction!='left')
 								old_direction = direction;
+							else
+								direction = old_direction;
 							break;
 						case 'up':
 							if(old_direction!='down')
 								old_direction = direction;
+							else
+								direction = old_direction;
 							break;
 						case 'down':
 							if(old_direction!='up')
 								old_direction = direction;
+							else
+								direction = old_direction;
 							break;
 					}
 				}
@@ -147,6 +154,7 @@ else
 				{
 					if(!endGame)
 					{
+						setWay(direction);
 						var next = pos[0].slice();
 						switch(old_direction)
 						{
@@ -197,7 +205,6 @@ else
 						}
 
 						pos.unshift(next);
-						pos.pop();
 					}
 				}
 
@@ -208,7 +215,6 @@ else
 					{
 						if(head[0] == pos[a][0] && head[1] == pos[a][1])
 						{
-							console.log("You hit yourself in the head. You died.");
 							body = true;
 						}
 					}
@@ -225,7 +231,6 @@ else
 					var head = pos[0];
 					if(head[0]>walls.right || head[0]<walls.left || head[1]<walls.up || head[1]>walls.down)
 					{
-						console.log("You bashed your head into a wall. You died.");
 						wall = true;
 					}
 				}
@@ -238,12 +243,12 @@ else
 
                        	document.getElementById('canvas');
                        	ctx.clearRect(0, 0, canvas.width, canvas.height);
-                       	createfood();
-		    			auto();
+                       	spawnfood();
+		    			getOn();
 		    			draw();
 		    			collideWall();
 		    			collideBody();
-
+		    			noms();
 
 		    			if (body || wall)
 		    			{
@@ -255,17 +260,32 @@ else
 
 	    		}, 400);
 	    		function createfood()
+	    		{//math help from: http://stackoverflow.com/questions/1527803/generating-random-numbers-in-javascript-in-a-specific-range
+	    			food = [Math.round(Math.random()*(canvas.width/block)), Math.round(Math.random()*(canvas.height/block))];
+	    			if(food[0] == canvas.width/block)
+	    				food[0] = food[0]-1;
+	    			if(food[1] == canvas.height/block)
+	    				food[1] == food[1]-1;
+	    		}
+	    		function spawnfood()
 	    		{
-	    			if(foodexists=false)
+	    			if(foodexists == false)
+	    				createfood();
+	    			ctx.beginPath();
+	    			ctx.fillStyle="#FF0000";
+	    			ctx.fillRect(food[0]*block, food[1]*block, block, block);
+	    			ctx.fill();
+	    			ctx.closePath();
+	    			foodexists=true;
+	    		}
+	    		function noms()
+	    		{
+	    			if(food[0]==pos[0][0] && food[1]==pos[0][1])
 	    			{
-	    				food = [Math.round(Math.random(canvas.width-1)), Math.round(Math.random(canvas.height-1))];
-	    				ctx.beginPath();
-	    				ctx.fillStyle="#FF0000";
-	    				ctx.fillRect(food[0], food[1], block, block);
-	    				ctx.fill();
-	    				ctx.closePath();
-	    				foodexists=true;
-	    				console.log(food[0]);
+	    				ctx.clearRect(food[0],food[1],block,block);
+	    				foodexists=false;
+	    				auto();
+	    				console.log(pos.length);
 	    			}
 	    		}
 
