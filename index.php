@@ -148,7 +148,7 @@ if($action == "add_user")
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="#">McGonagall Books</a>
+	          <a class="navbar-brand" href="#">Super Snake</a>
 	        </div>
 	        <div id="navbar" class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav pull-right">
@@ -164,8 +164,8 @@ if($action == "add_user")
 			<div class="main index-main">
             <div class="container sign-up-container">
                 <div class="text main-nav">
-                    <h1>McGonagall Books</h1> 
-                    <h4>The Book Shop with a Particular Proclivity for Pleasant Reads</h4>
+                    <h1>Super Snake</h1> 
+                    <h4>An enjoyable rendition of the classic 8-bit game.</h4>
                     <p class="lead "></p>
                     <p><a id="join-button" class="btn btn-lg btn-success site-signUp" href="#" role="button">Sign Up Today!</a></p>
                 </div>
@@ -203,7 +203,7 @@ if($action == "add_user")
 
 		<footer class="footer"> <!-- take from footer example-->
 	      <div class="container footer-container">
-	        <p>McGonagall Books: Castle Ruins, Scotland</p>
+	        <p>Super Snake&copy;: Connor Smith and Kayla Holcomb 2016</p>
 	      </div>
 	    </footer>
 
