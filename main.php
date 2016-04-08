@@ -124,6 +124,8 @@ else
 				var old_direction = 'right';
 				var block = 10;
 				var endGame = false;
+				var collideBody = false;
+				var collideWall = false; 
 
 				function draw()
 				{
@@ -222,6 +224,7 @@ else
 						if(head[0] == pos[a][0] && head[1] == pos[a][1])
 							console.log("You hit yourself in the head. You died.");
 					}
+					collideBody = true;
 				}
 				function collideWall()
 				{
@@ -235,6 +238,7 @@ else
 					var head = pos[0];
 					if(head[0]>walls.right || head[0]<walls.left || head[1]<walls.up || head[1]>walls.down)
 						console.log("You bashed your head into a wall. You died.");
+					collideWall = true;
 				}
 
 				setTimeout(function () 
