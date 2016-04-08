@@ -83,7 +83,7 @@ if($action == "add_user")
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>arg12c Test Blog</title>
+		<title>Super Snake</title>
 		<!--from jquery.com-->
 		<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
