@@ -208,9 +208,9 @@ else
 					}
 				}
 
-				//don't start moving immediately
-				setTimeout( function ()
-				{
+				// //don't start moving immediately
+				// setTimeout( function ()
+				// {
 					//move automatically every half second
 					setInterval( function () 
 					{
@@ -221,19 +221,20 @@ else
 	                        var canvas = document.getElementById('canvas');
 			    			auto();
 			    			draw();
+			    			collideWall();
+			    			collideBody();
 
 			    			if (body || wall)
 			    			{
 			    				endGame = true;
 			    				location.href = "#modal-endGame"; //fix later
-			    				alert("End Game");
 			    			}
 			    			lastMove = currentTime;
 	                    }
 
 		    		}, 500);
 
-				}, 500);
+				// }, 500);
 
 				draw();
 			}
