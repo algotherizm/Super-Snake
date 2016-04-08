@@ -129,12 +129,6 @@ else
 				}
 			}
 
-			function drawthis()
-			{
-				var canvas = document.getElementById('canvas');
-				var ctx = canvas.getContext('2d');
-				ctx.fillRect(50,50,10,10);
-			}
 		</script>
 	</head>
 	<body onload="game()">
