@@ -242,7 +242,7 @@ else
 	        <div class="header">
 	            <nav>
 	                <ul class="main-nav nav nav-pills pull-right">
-	                	<li role="presentation"><a class="cd-signin site-endGame" href="#"> End Game</a></li>
+	                	<li role="presentation"><a class="cd-signin site-signIn" href="#"> End Game</a></li>
 	                    <li role="presentation"><a class="cd-signin" href="dashboard.php"> Lobby</a></li>
 	                    <li role="presentation"><a class="cd-signin" href="logOut.php"> Sign Out</a></li>
 	                </ul>
