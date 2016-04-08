@@ -47,16 +47,15 @@ else
 		<script type="text/javascript" src="../Super-Snake/js/main.js"/>
 		<script type="text/paperscript" canvas="canvas">
 	   
-	   		// SNAKE MOVES AUTOMATICALLY IN SAME DIRECTION
-	   		// GAME LOOP - START AND END FUNCTION (clear canvas, redraw and auto move, timeout from last arrow key press)
 	   		// GROWTH AUTOMATICALLY
+	   		// END GAME MODAL
+	   		// LOBBY
 	   		
 	   		// MAIN MENU TO START NEW GAME
 	   		// OPTION TO LEAVE GAME
 	   		// FOOD = ADD TO SCORE
 	   		// SCORE BASED ON LENGTH + FOOD
 	   		// "HARD MODE" WHERE WE UP THE REFRESH RATE TO GIVE MORE SPEED
-	   		// LOBBY
 	   		// OPTION CREATE USER PROFILE (TRACK WINS & HIGH SCORES)
 	   		// MULTIPLAYER (2+)
 	   		// LOBBY SHOWS HIGH SCORES LIST 
@@ -176,7 +175,6 @@ else
 						}
 
 						pos.unshift(next);
-						pos.pop();
 					}
 				}
 
