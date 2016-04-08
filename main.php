@@ -209,34 +209,29 @@ else
 					}
 				}
 
-				// //don't start moving immediately
-				// setTimeout( function ()
-				// {
-					//move automatically every half second
-					setInterval( function () 
-					{
-						//only move auto after half second from last auto or last manual move
-						var currentTime = Date.now();
-	                    if((currentTime - lastMove >= 500))
-	                    {
-	                       	document.getElementById('canvas');
-	                       	ctx.clearRect(0, 0, canvas.width, canvas.height);
-			    			auto();
-			    			draw();
-			    			collideWall();
-			    			collideBody();
+				//move automatically every half second
+				setInterval( function () 
+				{
+					//only move auto after half second from last auto or last manual move
+					var currentTime = Date.now();
+                    if((currentTime - lastMove >= 500))
+                    {
+                       	document.getElementById('canvas');
+                       	ctx.clearRect(0, 0, canvas.width, canvas.height);
+		    			auto();
+		    			draw();
+		    			collideWall();
+		    			collideBody();
 
-			    			if (body || wall)
-			    			{
-			    				endGame = true;
-			    				location.href = "#modal-endGame"; //fix later
-			    			}
-			    			lastMove = currentTime;
-	                    }
+		    			if (body || wall)
+		    			{
+		    				endGame = true;
+		    				location.href = "#modal-endGame"; //fix later
+		    			}
+		    			lastMove = currentTime;
+                    }
 
-		    		}, 500);
-
-				// }, 500);
+	    		}, 100);
 
 				draw();
 			}
