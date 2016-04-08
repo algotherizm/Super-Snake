@@ -242,15 +242,13 @@ else
 	        <div class="header">
 	            <nav>
 	                <ul class="main-nav nav nav-pills pull-right">
-	                	<li role="presentation"><a class="cd-signin site-signIn" href="#"> End Game</a></li>
+	                	<li role="presentation"><a class="cd-signin site-signUp" href="#"> End Game</a></li>
 	                    <li role="presentation"><a class="cd-signin" href="dashboard.php"> Lobby</a></li>
 	                    <li role="presentation"><a class="cd-signin" href="logOut.php"> Sign Out</a></li>
 	                </ul>
 	            </nav>
 	            <a href="main.php"><h1 class="text-muted"><span class="glyphicon glyphicon-globe"></span> Super-Snake</h1></a>
 	        </div>
-	                            <p><a id="join-button" class="btn btn-lg btn-success site-signUp" href="#" role="button">Sign Up Today!</a></p>
-
 			    
 			<canvas id="canvas" resize style="border:1px solid #000000";></canvas>
 
