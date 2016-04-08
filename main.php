@@ -241,7 +241,7 @@ else
 					wall = true;
 				}
 
-				setTimeout(function () 
+				setInterval(function () 
 				{
 	    			var canvas = document.getElementById('canvas');
 
