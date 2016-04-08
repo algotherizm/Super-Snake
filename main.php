@@ -242,7 +242,7 @@ else
 	        <div class="header">
 	            <nav>
 	                <ul class="main-nav nav nav-pills pull-right">
-	                	<li role="presentation"><a class="cd-signin site-login" href="#"> End Game</a></li>
+	                	<li role="presentation"><a class="cd-signin site-endGame" href="#"> End Game</a></li>
 	                    <li role="presentation"><a class="cd-signin" href="dashboard.php"> Lobby</a></li>
 	                    <li role="presentation"><a class="cd-signin" href="logOut.php"> Sign Out</a></li>
 	                </ul>
@@ -252,9 +252,9 @@ else
 			    
 			<canvas id="canvas" resize style="border:1px solid #000000";></canvas>
 
-        <div id="sign-in-modal" class="sign-in-modal">
-          	<div class="sign-in-modal-container">
-                <div id="modal-login"> <!-- log in form -->
+        <div id="end-game-modal" class="end-game-modal">
+          	<div class="end-game-modal-container">
+                <div id="modal-endGame"> <!-- log in form -->
                 	<div id="loginError" role="alert" class="alert alert-danger modal-alert alert-hide"><p>That username and password did not match our records. Please, try again.<p></div>
                     <form class="modal-form" name="signIn" onsubmit="return validateSignIn()" method="post" action="#">
                     	<input type="hidden" name="action" value="login">
