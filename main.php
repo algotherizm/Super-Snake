@@ -66,7 +66,8 @@ else
 	    </script>
 
 	    <script>
-
+	    //lots of code from: http://codereview.stackexchange.com/questions/55323/snake-game-with-canvas-element-code
+	    //Much of the code is adapted from that site
 			function game()
 			{
 
@@ -87,6 +88,8 @@ else
 				var body = false;
 				var wall = false; 
 				var lastMove = Date.now();
+				var food = [0,0];
+				var foodexists = false;
 
 				function draw()
 				{
@@ -105,22 +108,39 @@ else
 					direction = keys[event.keyCode];
 					if(direction)
 					{
-						setWay(direction);
-						getOn();
-						document.getElementById('canvas');
-						ctx.clearRect(0, 0, canvas.width, canvas.height);
-						draw();
-						collideBody();
-						collideWall();
-						event.preventDefault();
-						lastMove = Date.now();
+						var currentTime = Date.now();
+						if(currentTime - lastMove >= 500)
+						{
+							setWay(direction);
+							event.preventDefault();
+							lastMove = Date.now();
+						}
 					}
 				}
 
 				function setWay(direction)
 				{
-					if(old_direction != direction)
-						old_direction = direction;
+					switch(direction)
+					{
+						case 'left':
+							if(old_direction!='right'){
+								old_direction = direction;
+								direction = old_direction;
+							}
+							break;
+						case 'right':
+							if(old_direction!='left')
+								old_direction = direction;
+							break;
+						case 'up':
+							if(old_direction!='down')
+								old_direction = direction;
+							break;
+						case 'down':
+							if(old_direction!='up')
+								old_direction = direction;
+							break;
+					}
 				}
 
 				function getOn()
@@ -177,6 +197,7 @@ else
 						}
 
 						pos.unshift(next);
+						pos.pop();
 					}
 				}
 
@@ -214,14 +235,15 @@ else
 				{
 					//only move auto after half second from last auto or last manual move
 					var currentTime = Date.now();
-                    if((currentTime - lastMove >= 500))
-                    {
+
                        	document.getElementById('canvas');
                        	ctx.clearRect(0, 0, canvas.width, canvas.height);
+                       	createfood();
 		    			auto();
 		    			draw();
 		    			collideWall();
 		    			collideBody();
+
 
 		    			if (body || wall)
 		    			{
@@ -230,9 +252,22 @@ else
 		    				alert("Game Over - You Lose");
 		    			}
 		    			lastMove = currentTime;
-                    }
 
-	    		}, 100);
+	    		}, 400);
+	    		function createfood()
+	    		{
+	    			if(foodexists=false)
+	    			{
+	    				food = [Math.round(Math.random(canvas.width-1)), Math.round(Math.random(canvas.height-1))];
+	    				ctx.beginPath();
+	    				ctx.fillStyle="#FF0000";
+	    				ctx.fillRect(food[0], food[1], block, block);
+	    				ctx.fill();
+	    				ctx.closePath();
+	    				foodexists=true;
+	    				console.log(food[0]);
+	    			}
+	    		}
 
 				draw();
 			}
