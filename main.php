@@ -91,6 +91,10 @@ else
 				var lastMove = Date.now();
 				var food = [0,0];
 				var foodexists = false;
+				var score = document.getElementById('score');
+				var new_score = 0;
+				console.log(canvas.width/block);
+				console.log(canvas.height/block);
 
 				function draw()
 				{
@@ -233,6 +237,7 @@ else
 					if(head[0]>walls.right || head[0]<walls.left || head[1]<walls.up || head[1]>walls.down)
 					{
 						wall = true;
+						console.log(walls.right);
 					}
 				}
 
@@ -250,14 +255,16 @@ else
 		    			collideWall();
 		    			collideBody();
 		    			noms();
-
+		    			if(!endGame)
+		    				new_score += 1;
+		    			score.innerHTML = new_score;
 		    			if (body || wall)
 		    			{
 		    				if(!notify)
 		    				{
 		    					endGame = true;
 		    					location.href = "#"; //fix later
-		    					console.log("Game Over - You Lose");
+		    					alert("Game Over. Your Score is: " + new_score);
 		    					notify = true;
 		    				}
 		    			}
@@ -268,9 +275,9 @@ else
 	    		{//math help from: http://stackoverflow.com/questions/1527803/generating-random-numbers-in-javascript-in-a-specific-range
 	    			food = [Math.round(Math.random()*(canvas.width/block)), Math.round(Math.random()*(canvas.height/block))];
 	    			if(food[0] == canvas.width/block)
-	    				food[0] = food[0]-1;
+	    				food[0] = food[0]-2;
 	    			if(food[1] == canvas.height/block)
-	    				food[1] == food[1]-1;
+	    				food[1] == food[1]-2;
 	    		}
 	    		function spawnfood()
 	    		{
@@ -291,6 +298,8 @@ else
 	    				foodexists=false;
 	    				auto();
 	    				console.log(pos.length);
+	    				new_score += 100;
+	    				score.innerHTML = new_score;
 	    			}
 	    		}
 
@@ -311,7 +320,8 @@ else
 	            </nav>
 	            <a href="main.php"><h1 class="text-muted"><span class="glyphicon glyphicon-globe"></span> Super-Snake</h1></a>
 	        </div>
-			    
+	        <h2 id="score_text" style="display:inline">Score:</h2>
+	        <h2 id="score" style="display:inline">0</h2>
 			<canvas id="canvas" resize style="border:1px solid #000000";></canvas>
 
         <div id="sign-in-modal" class="sign-in-modal">
@@ -326,7 +336,6 @@ else
                 </div>
             </div>
           </div>
-
            <footer class="footer">
 	            <p>&copy; Connor Smith and Kayla Holcomb 2016</p>
 	        </footer>
