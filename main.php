@@ -42,6 +42,8 @@ else
 	   	<link href="../Super-Snake/css/modal.css" rel="stylesheet">
 	    <link rel="stylesheet" href="../Super-Snake/js/paperjs-v0/examples/css/style.css">
 		<!--<script type="text/javascript" src="../Super-Snake/js/paperjs-v0/dist/paper-full.js"></script>-->
+		<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 		<script type="text/javascript" src="../Super-Snake/js/main.js"/>
 		<script type="text/paperscript" canvas="canvas">
 		
