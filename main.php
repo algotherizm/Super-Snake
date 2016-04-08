@@ -205,23 +205,25 @@ else
 					}
 				}
 
-				// setTimeout(
-				// 	setInterval(function () 
-				// 	{
-		  //   			var canvas = document.getElementById('canvas');
+				setTimeout( function ()
+				{
+					setInterval( function () 
+					{
+		    			var canvas = document.getElementById('canvas');
 
-		  //   			auto();
-		  //   			draw();
+		    			auto();
+		    			draw();
 
-		  //   			if (body || wall)
-		  //   			{
-		  //   				endGame = true;
-		  //   				location.href = "#modal-endGame"; //fix later
-		  //   				alert("End Game");
-		  //   			}
+		    			if (body || wall)
+		    			{
+		    				endGame = true;
+		    				location.href = "#modal-endGame"; //fix later
+		    				alert("End Game");
+		    			}
 
-		  //   		}, 2000);
-				// }, 1000);
+		    		}, 2000);
+
+				}, 1000);
 
 				draw();
 			}
