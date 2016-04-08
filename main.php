@@ -85,6 +85,7 @@ else
 				var endGame = false;
 				var body = false;
 				var wall = false; 
+				var lastMove = Date.now();
 
 				function draw()
 				{
@@ -111,6 +112,7 @@ else
 						collideBody();
 						collideWall();
 						event.preventDefault();
+						lastMove = Date.now();
 					}
 				}
 
@@ -173,6 +175,7 @@ else
 						}
 
 						pos.unshift(next);
+						pos.pop();
 					}
 				}
 
@@ -205,25 +208,32 @@ else
 					}
 				}
 
+				//don't start moving immediately
 				setTimeout( function ()
 				{
+					//move automatically every half second
 					setInterval( function () 
 					{
-		    			var canvas = document.getElementById('canvas');
+						//only move auto after half second from last auto or last manual move
+						var currentTime = Date.now();
+	                    if((currentTime - lastMove >= 500))
+	                    {
+	                        var canvas = document.getElementById('canvas');
+			    			auto();
+			    			draw();
 
-		    			auto();
-		    			draw();
+			    			if (body || wall)
+			    			{
+			    				endGame = true;
+			    				location.href = "#modal-endGame"; //fix later
+			    				alert("End Game");
+			    			}
+			    			lastMove = currentTime;
+	                    }
 
-		    			if (body || wall)
-		    			{
-		    				endGame = true;
-		    				location.href = "#modal-endGame"; //fix later
-		    				alert("End Game");
-		    			}
+		    		}, 500);
 
-		    		}, 1000);
-
-				}, 1000);
+				}, 500);
 
 				draw();
 			}
