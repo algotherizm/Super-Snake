@@ -225,7 +225,7 @@ else
 		    			if (body || wall)
 		    			{
 		    				endGame = true;
-		    				location.href = "#site-signUp"; //fix later
+		    				location.href = "#"; //fix later
 		    			}
 		    			lastMove = currentTime;
                     }
@@ -242,7 +242,7 @@ else
 	        <div class="header">
 	            <nav>
 	                <ul class="main-nav nav nav-pills pull-right">
-	                	<li role="presentation"><a class="cd-signin" href="#site-signUp"> End Game</a></li>
+	                	<li role="presentation"><a class="cd-signin site-signIn" href="#"> End Game</a></li>
 	                    <li role="presentation"><a class="cd-signin" href="dashboard.php"> Lobby</a></li>
 	                    <li role="presentation"><a class="cd-signin" href="logOut.php"> Sign Out</a></li>
 	                </ul>
@@ -254,10 +254,6 @@ else
 
         <div id="sign-in-modal" class="sign-in-modal">
           	<div class="sign-in-modal-container">
-                <ul class="modal-switcher">
-                    <li><a href="#">Sign In</a></li>
-                    <li><a href="#">New Account</a></li>
-                </ul>
                 <div id="modal-login"> <!-- log in form -->
                 	<div id="loginError" role="alert" class="alert alert-danger modal-alert alert-hide"><p>That username and password did not match our records. Please, try again.<p></div>
                     <form class="modal-form" name="signIn" onsubmit="return validateSignIn()" method="post" action="#">
@@ -265,17 +261,6 @@ else
                         <p class="fieldset"><label class="modal-label">Email:</label><input required class="modal-input" id="logInEmail" name="email" type="email" placeholder="E-mail"></p>
                         <p class="fieldset"><label class="modal-label">Password:</label><input required class="modal-input" id="logInPassword" name="password" type="password"  placeholder="Password"></p>
                         <input class="modal-input" type="submit" value="Login">
-                    </form>
-                </div>
-                <div id="modal-signup"> <!-- sign up form -->
-                    <form class="modal-form" name="signUp" onsubmit="return validateSignUp()" method="post" action="#">
-                    	<input type="hidden" name="action" value="add_user">
-                        <p class="fieldset"><label class="modal-label">First Name:</label><input required class="modal-input" id="fname" name="fname" type="text" placeholder="First Name"></p>
-                        <p class="fieldset"><label class="modal-label">Last Name:</label><input required class="modal-input" id="lname" name="lname" type="text" placeholder="Last Name"></p>
-                        <p class="fieldset"><label class="modal-label">Email:</label><input required class="modal-input" id="email" name="email" type="email" placeholder="E-mail"></p>
-                        <p class="fieldset"><label class="modal-label">Password:</label><input required class="modal-input" id="password" name="password" type="password"  placeholder="Password"></p>
-                        <p class="fieldset"><label id="pass2Label" class="modal-label">Enter Password Again:</label><input required class="modal-input" id="password2" name="password2" type="password"  placeholder="Retype Password"></p>
-                        <input class="modal-input" type="submit" value="Create Account">
                     </form>
                 </div>
             </div>
