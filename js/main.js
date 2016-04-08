@@ -25,8 +25,6 @@ jQuery(document).ready(function($){
 	var formModal = $('#sign-in-modal'),
     formLogin = formModal.find('#modal-login'),
     formSignup = formModal.find('#modal-signup'),
-    formEndGame = formModal.find('#modal-endGame')
-    //formForgotPassword = formModal.find('#cd-reset-password'),
     formModalTab = $('.modal-switcher'),
     tabLogin = formModalTab.children('li').eq(0).children('a'),
     tabSignup = formModalTab.children('li').eq(1).children('a'),

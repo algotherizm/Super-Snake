@@ -54,17 +54,17 @@ time, mark, audio, video {
 	border-radius: 0.25em;
 }
 
-.sign-in-modal-container .modal-switcher:after {
+.sign-in-modal-container .modal-switcher:after, .end-game-modal-container .modal-switcher:after {
   content: "";
   display: table;
   clear: both;
 }
-.sign-in-modal-container .modal-switcher li {
+.sign-in-modal-container .modal-switcher li, .end-game-modal-container .modal-switcher li{
   width: 50%;
   float: left;
   text-align: center;
 }
-.sign-in-modal-container .modal-switcher a {
+.sign-in-modal-container .modal-switcher a, .end-game-modal-container .modal-switcher a{
   display: block;
   width: 100%;
   height: 50px;
@@ -72,10 +72,10 @@ time, mark, audio, video {
   background: #002500;/*#d2d8d8;*/
   color: #809191;
 }
-.sign-in-modal-container .modal-switcher a:hover {
+.sign-in-modal-container .modal-switcher a:hover, .end-game-modal-container .modal-switcher a:hover  {
   color:#fff;
 }
-.sign-in-modal-container .modal-switcher a.selected {
+.sign-in-modal-container .modal-switcher a.selected, .end-game-modal-container .modal-switcher a:selected  {
   background: #393f38;/*#FFF;*/
   color: #fff;/*#505260;*/
 }
