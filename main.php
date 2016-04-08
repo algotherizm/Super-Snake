@@ -217,7 +217,8 @@ else
 
 		    			if (collideBody || collideWall)
 		    				endGame = true;
-		    				location.href = "#modal-endGame";
+		    				location.href = "#modal-endGame"; //fix later
+		    				alert("End Game");
 
 		    		}, 1000);
 		    	}
@@ -227,7 +228,7 @@ else
 
 		</script>
 	</head>
-	<body onload="game()">
+	<body onload="game(); gameLoop()">
 	   <div class="myContainer">
 	        <div class="header">
 	            <nav>
