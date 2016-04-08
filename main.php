@@ -53,7 +53,6 @@ else
 	   		// MAIN MENU TO START NEW GAME
 	   		// OPTION TO LEAVE GAME
 	   		// FOOD = ADD TO SCORE
-	   		// SCORE BASED ON LENGTH + FOOD
 	   		// "HARD MODE" WHERE WE UP THE REFRESH RATE TO GIVE MORE SPEED
 	   		// OPTION CREATE USER PROFILE (TRACK WINS & HIGH SCORES)
 	   		// MULTIPLAYER (2+)
@@ -316,10 +315,8 @@ else
 
         <div id="sign-in-modal" class="sign-in-modal">
           	<div class="sign-in-modal-container">
-                <div id="modal-signup"> <!-- sign up form -->
                     <button type="button" class="btn btn-default" href="#" onclick="window.location.reload(true);">New Game</button>
-                    <button type="button" class="btn btn-default" href="lobby.php">Return to Lobby</button>
-                </div>
+                    <button type="button" class="btn btn-default" onhref="lobby.php">Return to Lobby</button>
             </div>
           </div>
 

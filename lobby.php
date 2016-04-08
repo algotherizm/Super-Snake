@@ -64,7 +64,7 @@ else
 
         </script>
     </head>
-    <body onload="game()">
+    <body>
        <div class="myContainer">
             <div class="header">
                 <nav>
