@@ -46,14 +46,8 @@ else
 		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 		<script type="text/javascript" src="../Super-Snake/js/main.js"/>
 		<script type="text/paperscript" canvas="canvas">
-	   
-	   		// END GAME MODAL
-	   		// LOBBY
-	   		
-	   		// MAIN MENU TO START NEW GAME
+	  
 	   		// OPTION TO LEAVE GAME
-	   		// FOOD = ADD TO SCORE
-	   		// SCORE BASED ON LENGTH + FOOD
 	   		// "HARD MODE" WHERE WE UP THE REFRESH RATE TO GIVE MORE SPEED
 	   		// OPTION CREATE USER PROFILE (TRACK WINS & HIGH SCORES)
 	   		// MULTIPLAYER (2+)
@@ -265,6 +259,7 @@ else
 		    					endGame = true;
 		    					location.href = "#"; //fix later
 		    					alert("Game Over. Your Score is: " + new_score);
+
 		    					notify = true;
 		    				}
 		    			}
@@ -314,7 +309,7 @@ else
 	            <nav>
 	                <ul class="main-nav nav nav-pills pull-right">
 	                	<li role="presentation"><a class="cd-signin site-signUp" href="#"> End Game</a></li>
-	                    <li role="presentation"><a class="cd-signin" href="dashboard.php"> Lobby</a></li>
+	                    <li role="presentation"><a class="cd-signin" href="lobby.php"> Lobby</a></li>
 	                    <li role="presentation"><a class="cd-signin" href="logOut.php"> Sign Out</a></li>
 	                </ul>
 	            </nav>
@@ -326,14 +321,8 @@ else
 
         <div id="sign-in-modal" class="sign-in-modal">
           	<div class="sign-in-modal-container">
-                <div id="modal-signup"> <!-- sign up form -->
-                    <form class="modal-form" name="signIn" onsubmit="return validateSignIn()" method="post" action="#">
-                    	<input type="hidden" name="action" value="login">
-                        <p class="fieldset"><label class="modal-label">Email:</label><input required class="modal-input" id="logInEmail" name="email" type="email" placeholder="E-mail"></p>
-                        <p class="fieldset"><label class="modal-label">Password:</label><input required class="modal-input" id="logInPassword" name="password" type="password"  placeholder="Password"></p>
-                        <input class="modal-input" type="submit" value="Login">
-                    </form>
-                </div>
+                    <button type="button" class="btn btn-default" href="#" onclick="window.location.reload(true);">New Game</button>
+                    <button type="button" class="btn btn-default" onclick="window.location.assign('http://52.10.103.58/Super-Snake/lobby.php');" href="lobby.php">Return to Lobby</button>
             </div>
           </div>
            <footer class="footer">
