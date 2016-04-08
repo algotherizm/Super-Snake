@@ -46,47 +46,6 @@ else
 		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 		<script type="text/javascript" src="../Super-Snake/js/main.js"/>
 		<script type="text/paperscript" canvas="canvas">
-		
-			// Adapted from the following Processing example:
-	        // http://processing.org/learning/topics/follow3.html
-
-	        // The amount of points in the path:
-	        var points = 25;
-
-	        // The distance between the points:
-	        var length = 35;
-
-	        var path = new Path({
-	            strokeColor: '#E4141B',
-	            strokeWidth: 20,
-	            strokeCap: 'round'
-	        });
-
-	        var start = view.center / [10, 1];
-	        for (var i = 0; i < points; i++)
-	            path.add(start + new Point(i * length, 0));
-
-	        function onMouseMove(event) {
-	            path.firstSegment.point = event.point;
-	            for (var i = 0; i < points - 1; i++) {
-	                var segment = path.segments[i];
-	                var nextSegment = segment.next;
-	                var vector = segment.point - nextSegment.point;
-	                vector.length = length;
-	                nextSegment.point = segment.point - vector;
-	            }
-	            path.smooth();
-	        }
-
-	        function onMouseDown(event) {
-	            path.fullySelected = true;
-	            path.strokeColor = '#e08285';
-	        }
-
-	        function onMouseUp(event) {
-	            path.fullySelected = false;
-	            path.strokeColor = '#e4141b';
-	        }
 	   
 	   		// SNAKE MOVES AUTOMATICALLY IN SAME DIRECTION
 	   		// GAME LOOP - START AND END FUNCTION (clear canvas, redraw and auto move, timeout from last arrow key press)
@@ -138,6 +97,7 @@ else
 						ctx.closePath();
 					}
 				}
+
 				window.onkeydown = function(event)
 				{
 					direction = keys[event.keyCode];
@@ -222,9 +182,11 @@ else
 					for(var a=1; a<pos.length; a++)
 					{
 						if(head[0] == pos[a][0] && head[1] == pos[a][1])
+						{
 							console.log("You hit yourself in the head. You died.");
+							body = true;
+						}
 					}
-					body = true;
 				}
 				function collideWall()
 				{
@@ -237,27 +199,29 @@ else
 					};
 					var head = pos[0];
 					if(head[0]>walls.right || head[0]<walls.left || head[1]<walls.up || head[1]>walls.down)
+					{
 						console.log("You bashed your head into a wall. You died.");
-					wall = true;
+						wall = true;
+					}
 				}
 
-				setTimeout(
-					setInterval(function () 
-					{
-		    			var canvas = document.getElementById('canvas');
+				// setTimeout(
+				// 	setInterval(function () 
+				// 	{
+		  //   			var canvas = document.getElementById('canvas');
 
-		    			auto();
-		    			draw();
+		  //   			auto();
+		  //   			draw();
 
-		    			if (body || wall)
-		    			{
-		    				endGame = true;
-		    				location.href = "#modal-endGame"; //fix later
-		    				alert("End Game");
-		    			}
+		  //   			if (body || wall)
+		  //   			{
+		  //   				endGame = true;
+		  //   				location.href = "#modal-endGame"; //fix later
+		  //   				alert("End Game");
+		  //   			}
 
-		    		}, 2000);
-				}, 1000);
+		  //   		}, 2000);
+				// }, 1000);
 
 				draw();
 			}
