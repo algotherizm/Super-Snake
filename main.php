@@ -47,7 +47,6 @@ else
 		<script type="text/javascript" src="../Super-Snake/js/main.js"/>
 		<script type="text/paperscript" canvas="canvas">
 	   
-	   		// GROWTH AUTOMATICALLY
 	   		// END GAME MODAL
 	   		// LOBBY
 	   		
@@ -60,6 +59,8 @@ else
 	   		// MULTIPLAYER (2+)
 	   		// LOBBY SHOWS HIGH SCORES LIST 
 	   		// MUSIC WHILE PLAYING
+	   		// better looking snake (paperJS snake)
+	   		// pause button
 
 	    </script>
 
@@ -251,9 +252,9 @@ else
 			    
 			<canvas id="canvas" resize style="border:1px solid #000000";></canvas>
 
-	        <div id="game-over-modal" class="game-over-modal">
-	          	<div class="game-over-modal-container">
-	                <div id="modal-endGame">
+	        <div id="sign-in-modal" class="sign-in-modal">
+	          	<div class="sign-in-modal-container">
+	                <div id="modal-signIn">
 	                    <button type="button" class="btn btn-default">End Game</button>
 	                    <button type="button" class="btn btn-default">Return to Lobby</button>
 	                </div>
