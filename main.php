@@ -107,7 +107,7 @@ else
 						setWay(direction);
 						getOn();
 						document.getElementById('canvas');
-						canvas.width = canvas.width;
+						ctx.clearRect(0, 0, canvas.width, canvas.height);
 						draw();
 						collideBody();
 						collideWall();
@@ -220,7 +220,7 @@ else
 	                    if((currentTime - lastMove >= 500))
 	                    {
 	                       	document.getElementById('canvas');
-	                       	context.clearRect(0, 0, canvas.width, canvas.height);
+	                       	ctx.clearRect(0, 0, canvas.width, canvas.height);
 			    			auto();
 			    			draw();
 			    			collideWall();
