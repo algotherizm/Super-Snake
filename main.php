@@ -39,7 +39,7 @@ else
 	    <title>Super-Snake</title>
 	    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 	    <link href="../Super-Snake/css/main.css" rel="stylesheet">
-	    <link rel="stylesheet" href="../Super-Snake/js/paperjs-v0/css/style.css">
+	    <link rel="stylesheet" href="../Super-Snake/js/paperjs-v0/examples/css/style.css">
 		<!--<script type="text/javascript" src="../Super-Snake/js/paperjs-v0/dist/paper-full.js"></script>-->
 		<!--<script type="text/javascript" src="../Super-Snake/js/game.js"/>-->
 		<script type="text/paperscript" canvas="canvas">
@@ -85,12 +85,29 @@ else
 	            path.strokeColor = '#e4141b';
 	        }
 	   
+	   		// SNAKE MOVES AUTOMATICALLY IN SAME DIRECTION
+	   		// GAME LOOP - START AND END FUNCTION (clear canvas, redraw and auto move, timeout from last arrow key press)
+	   		// GROWTH AUTOMATICALLY
+	   		// OVERLAP KILLS OR HIT WALL
+	   		// REMAKE INDEX PAGE
+	   		
+	   		// MAIN MENU TO START NEW GAME
+	   		// OPTION TO LEAVE GAME
+	   		// FOOD = ADD TO SCORE
+	   		// SCORE BASED ON LENGTH + FOOD
+	   		// "HARD MODE" WHERE WE UP THE REFRESH RATE TO GIVE MORE SPEED
+	   		// LOBBY
+	   		// OPTION CREATE USER PROFILE (TRACK WINS & HIGH SCORES)
+	   		// MULTIPLAYER (2+)
+	   		// LOBBY SHOWS HIGH SCORES LIST 
 
 	    </script>
 
 	    <script>
+
 			function game()
 			{
+
 	    		var canvas = document.getElementById('canvas');
 				var ctx = canvas.getContext('2d');
 				var keys = 
@@ -104,6 +121,8 @@ else
 				var direction = 'right';
 				var old_direction = 'right';
 				var block = 10;
+				var endGame = false;
+
 				function draw()
 				{
 					for(var x=0; x<pos.length; x++)
@@ -122,6 +141,7 @@ else
 					{
 						setWay(direction);
 						getOn();
+						pos.pop();
 						document.getElementById('canvas');
 						canvas.width = canvas.width;
 						draw();
@@ -158,9 +178,9 @@ else
 					}
 
 					pos.unshift(next);
-					pos.pop();
 				}
-				function collideBody()
+
+                function collideBody()
 				{
 					var head = pos[0];
 					for(var a=1; a<pos.length; a++)
@@ -182,6 +202,19 @@ else
 					if(head[0]>walls.right || head[0]<walls.left || head[1]<walls.up || head[1]>walls.down)
 						console.log("You bashed your head into a wall. You died.");
 				}
+
+				function gameLoop()
+		    	{
+		    		setTimeout(function () {
+
+		    			var canvas = document.getElementById('canvas');
+		    			getOn();
+		    			if (collideBody || collideWall)
+		    				endGame = true;
+
+		    		}, 1000);
+		    	}
+
 				draw();
 			}
 
@@ -200,7 +233,38 @@ else
 	        </div>
 			    
 			<canvas id="canvas" resize style="border:1px solid #000000";></canvas>
-	        <footer class="footer">
+			<a href="#" onclick="game()">Click to draw a rectangle</a><br/>
+
+	        <div id="game-over-modal" class="game-over-modal">
+	          	<div class="game-over-modal-container">
+	                <ul class="modal-switcher">
+	                    <li><a href="#">Sign In</a></li>
+	                    <li><a href="#">New Account</a></li>
+	                </ul>
+	                <div id="modal-login"> <!-- log in form -->
+	                	<div id="loginError" role="alert" class="alert alert-danger modal-alert alert-hide"><p>That username and password did not match our records. Please, try again.<p></div>
+	                    <form class="modal-form" name="signIn" onsubmit="return validateSignIn()" method="post" action="#">
+	                    	<input type="hidden" name="action" value="login">
+	                        <p class="fieldset"><label class="modal-label">Email:</label><input required class="modal-input" id="logInEmail" name="email" type="email" placeholder="E-mail"></p>
+	                        <p class="fieldset"><label class="modal-label">Password:</label><input required class="modal-input" id="logInPassword" name="password" type="password"  placeholder="Password"></p>
+	                        <input class="modal-input" type="submit" value="Login">
+	                    </form>
+	                </div>
+	                <div id="modal-signup"> <!-- sign up form -->
+	                    <form class="modal-form" name="signUp" onsubmit="return validateSignUp()" method="post" action="#">
+	                    	<input type="hidden" name="action" value="add_user">
+	                        <p class="fieldset"><label class="modal-label">First Name:</label><input required class="modal-input" id="fname" name="fname" type="text" placeholder="First Name"></p>
+	                        <p class="fieldset"><label class="modal-label">Last Name:</label><input required class="modal-input" id="lname" name="lname" type="text" placeholder="Last Name"></p>
+	                        <p class="fieldset"><label class="modal-label">Email:</label><input required class="modal-input" id="email" name="email" type="email" placeholder="E-mail"></p>
+	                        <p class="fieldset"><label class="modal-label">Password:</label><input required class="modal-input" id="password" name="password" type="password"  placeholder="Password"></p>
+	                        <p class="fieldset"><label id="pass2Label" class="modal-label">Enter Password Again:</label><input required class="modal-input" id="password2" name="password2" type="password"  placeholder="Retype Password"></p>
+	                        <input class="modal-input" type="submit" value="Create Account">
+	                    </form>
+	                </div>
+	            </div>
+          	</div>
+
+           <footer class="footer">
 	            <p>&copy; Connor Smith and Kayla Holcomb 2016</p>
 	        </footer>
 
