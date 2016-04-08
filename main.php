@@ -47,6 +47,8 @@ else
 		<script type="text/javascript" src="../Super-Snake/js/main.js"/>
 		<script type="text/paperscript" canvas="canvas">
 	  
+	  		// better looking modal
+	  		// better lobby
 	   		// OPTION TO LEAVE GAME
 	   		// "HARD MODE" WHERE WE UP THE REFRESH RATE TO GIVE MORE SPEED
 	   		// OPTION CREATE USER PROFILE (TRACK WINS & HIGH SCORES)
