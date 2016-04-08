@@ -152,11 +152,13 @@ else
 						event.preventDefault();
 					}
 				}
+
 				function setWay(direction)
 				{
 					if(old_direction != direction)
 						old_direction = direction;
 				}
+
 				function getOn()
 				{
 					if(!endGame)
@@ -180,6 +182,34 @@ else
 								next[1] += 1;
 								break;
 						}
+						pos.unshift(next);
+					}
+				}
+
+				function auto()
+				{
+					if(!endGame)
+					{
+						var next = pos[0].slice();
+						switch(direction)
+						{
+							case 'left':
+								next[0] += -1;
+								break;
+
+							case 'up':
+								next[1] += -1;
+								break;
+
+							case 'right':
+								next[0] += 1;
+								break;
+
+							case 'down':
+								next[1] += 1;
+								break;
+						}
+
 						pos.unshift(next);
 					}
 				}
@@ -211,12 +241,14 @@ else
 				{
 	    			var canvas = document.getElementById('canvas');
 
-	    			//getOn();
+	    			auto();
 
 	    			if (collideBody || collideWall)
+	    			{
 	    				endGame = true;
 	    				location.href = "#modal-endGame"; //fix later
 	    				alert("End Game");
+	    			}
 
 	    		}, 1000);
 
