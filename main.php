@@ -219,7 +219,8 @@ else
 						var currentTime = Date.now();
 	                    if((currentTime - lastMove >= 500))
 	                    {
-	                        var canvas = document.getElementById('canvas');
+	                       	document.getElementById('canvas');
+	                       	context.clearRect(0, 0, canvas.width, canvas.height);
 			    			auto();
 			    			draw();
 			    			collideWall();
