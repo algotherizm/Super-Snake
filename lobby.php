@@ -49,7 +49,7 @@ else
         <script src="http://52.10.103.58/socket.io.js"/>
         <script>
 
-            var socket = io.connect('http://52.10.103.58');
+            var socket = io.connect('http://52.10.103.58:8000');
             socket.on('connect', function(){
                 var uname = <?php echo $email?>;
                 console.log(uname);

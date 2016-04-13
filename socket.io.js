@@ -8,7 +8,7 @@ var app = require('http').createServer()
 var usernames = {};
 var rooms = ['Lobby'];
 // creating the server ( localhost:8000 )
-app.listen(52.10.103.58);
+app.listen(52.10.103.58:8000);
  	io.sockets.on('connection', function(socket) 
  	{
   		socket.on('adduser', function (username)
