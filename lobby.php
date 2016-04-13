@@ -46,6 +46,15 @@ else
         <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         <script type="text/javascript" src="../Super-Snake/js/main.js"/>
         <script type="text/paperscript" canvas="canvas">
+        <script src="http://52.10.103.58/socket.io.js"/>
+        <script>
+
+            var socket = io.connect('http://52.10.103.58');
+            socket.on('connect', function(){
+                var uname = <?php echo $email?>;
+                console.log(uname);
+                socket.emit('adduser', uname);
+            });
        
             // END GAME MODAL
             
