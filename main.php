@@ -50,16 +50,17 @@ else
 	  
 	  		// better looking modal
 	  		// better lobby
-	   		// OPTION TO LEAVE GAME
+	  		// fruit in different shapes
 	   		// "HARD MODE" WHERE WE UP THE REFRESH RATE TO GIVE MORE SPEED
 	   		// OPTION CREATE USER PROFILE (TRACK WINS & HIGH SCORES)
-	   		// MULTIPLAYER (2+)
+	   		// MULTIPLAYER (2+) "web sockets"
 	   		// LOBBY SHOWS HIGH SCORES LIST 
 	   		// MUSIC WHILE PLAYING
 	   		// better looking snake (paperJS snake)
 	   		// pause button
 	   		// carry over to the other side of the screen
-
+	   		// choose colors for multiplayer
+	   		
 	    </script>
 
 	    <script src="http://52.10.103.58/socket.io.js"/>
