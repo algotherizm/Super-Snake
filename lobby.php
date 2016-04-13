@@ -46,7 +46,7 @@ else
         <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         <script type="text/javascript" src="../Super-Snake/js/main.js"/>
         <script type="text/paperscript" canvas="canvas">
-        <script src="http://52.10.103.58/socket.io.js"/>
+        <script src="../Super-Snake/socket.io.js"/>
         <script>
 
             var socket = io.connect('http://52.10.103.58:8000');
@@ -54,6 +54,27 @@ else
                 var uname = <?php echo $email?>;
                 console.log(uname);
                 socket.emit('adduser', uname);
+            });
+
+            socket.on('updatechat', function (username, data) 
+            {
+                $('#conversation').append('<b>'+ username + ':</b> ' + data + '<br>');
+            });
+
+            socket.on('updaterooms', function (rooms, current_room)    
+            {
+                $('#rooms').empty();
+                $.each(rooms, function(key, value) 
+                {
+                    if(value == current_room)
+                    {
+                        $('#rooms').append('<div>' + value + '</div>');
+                    }
+                    else 
+                    {
+                        $('#rooms').append('<div><a href="#" onclick="switchRoom(\''+value+'\')">' + value + '</a></div>');
+                    }
+                });
             });
        
             // END GAME MODAL
