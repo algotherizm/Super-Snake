@@ -44,6 +44,7 @@ else
 		<!--<script type="text/javascript" src="../Super-Snake/js/paperjs-v0/dist/paper-full.js"></script>-->
 		<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
 		<script type="text/javascript" src="../Super-Snake/js/main.js"/>
 		<script type="text/paperscript" canvas="canvas">
 	  
@@ -58,6 +59,18 @@ else
 	   		// better looking snake (paperJS snake)
 	   		// pause button
 	   		// carry over to the other side of the screen
+
+	    </script>
+
+	    <script src="http://52.10.103.58/socket.io.js"/>
+	    <script>
+
+	    	var socket = io.connect('http://52.10.103.58');
+	    	socket.on('connect', function(){
+	    		var uname = <?php echo $email?>;
+	    		console.log(uname);
+	    		socket.emit('adduser', uname);
+	    	});
 
 	    </script>
 
