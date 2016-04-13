@@ -3,6 +3,7 @@ var clients = [];
 var app = require('http').createServer()
 , fs = require('fs')
 , io = require('socket.io').listen(app);
+console.log('socket is running');
 
 //http://stackoverflow.com/questions/19156636/node-js-and-socket-io-creating-room
 var usernames = {};
@@ -21,4 +22,4 @@ app.listen(8000);
     	    socket.broadcast.to('Lobby').emit('updatechat', 'SERVER', username + ' has connected to this room');
     	    socket.emit('updaterooms', rooms, 'Lobby');
     	})
-  	}
+  }

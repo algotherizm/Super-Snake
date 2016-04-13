@@ -63,18 +63,6 @@ else
 	   		
 	    </script>
 
-	    <script src="http://52.10.103.58/socket.io.js"/>
-	    <script>
-
-	    	var socket = io.connect('http://52.10.103.58');
-	    	socket.on('connect', function(){
-	    		var uname = <?php echo $email?>;
-	    		console.log(uname);
-	    		socket.emit('adduser', uname);
-	    	});
-
-	    </script>
-
 	    <script>
 	    //lots of code from: http://codereview.stackexchange.com/questions/55323/snake-game-with-canvas-element-code
 	    //Much of the code is adapted from that site
