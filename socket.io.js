@@ -23,4 +23,4 @@ app.listen(8000);
     	    socket.broadcast.to('Lobby').emit('updatechat', 'SERVER', username + ' has connected to this room');
     	    socket.emit('updaterooms', rooms, 'Lobby');
     	})
-  }
+  });
