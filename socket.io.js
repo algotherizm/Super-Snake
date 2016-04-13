@@ -12,6 +12,7 @@ var rooms = ['Lobby'];
 app.listen(8000);
  	io.sockets.on('connection', function(socket) 
  	{
+      console.log('socket is connected');
   		socket.on('adduser', function (username)
   		{
     	    socket.username = username;
