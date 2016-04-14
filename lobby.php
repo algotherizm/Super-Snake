@@ -47,7 +47,6 @@ else
         <script type="text/javascript" src="../Super-Snake/js/main.js"/>
         <script type="text/paperscript" canvas="canvas"/>
         <script src="/var/tmp/node/node_modules/socket.io-client/socket.io.js"/>
-        <script src="../Super-Snake/socket.js"/>
         <script>
 
             var socket = io.connect('http://52.10.103.58:5000');
