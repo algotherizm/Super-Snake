@@ -53,6 +53,7 @@ else
             socket.on('connect', function(){
                 var uname = <?php echo $email?>;
                 console.log(uname);
+                console.log("Connected!");
                 socket.emit('adduser', uname);
             });
 
