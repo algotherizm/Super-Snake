@@ -49,7 +49,7 @@ else
         <script src="../Super-Snake/socket.io.js"/>
         <script>
 
-            var socket = io.connect('http://52.10.103.58:8000');
+            var socket = io.connect('http://52.10.103.58:5000');
                 
             var uname = <?php echo $email?>;
             socket.emit('adduser', uname);
