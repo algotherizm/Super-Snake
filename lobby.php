@@ -43,8 +43,8 @@ else
         <link rel="stylesheet" href="../Super-Snake/js/paperjs-v0/examples/css/style.css">
         <!--<script type="text/javascript" src="../Super-Snake/js/paperjs-v0/dist/paper-full.js"></script>-->
         <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script src="http://52.10.103.58/node/node_modules/socket.io-client/socket.io.js"/>
-        <script type="text/javascript" src="../Super-Snake/js/main.js"/>
+        <script type="text/javascript" src="http://52.10.103.58/node/node_modules/socket.io-client/socket.io.js"/>
+        <script type="text/javascript" src="http://52.10.103.58/Super-Snake/js/main.js"/>
         <script type="text/paperscript" canvas="canvas"/>
         <script>
 
