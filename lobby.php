@@ -50,6 +50,10 @@ else
         <script>
 
             var socket = io.connect('http://52.10.103.58:8000');
+                
+            var uname = <?php echo $email?>;
+            socket.emit('adduser', uname);
+
             socket.on('connect', function(){
                 var uname = <?php echo $email?>;
                 console.log(uname);
