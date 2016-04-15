@@ -167,11 +167,13 @@ $num = $_GET["num"];
 					ctx.fillStyle = 'black';
 				}
 
-				socket.on('updatePosition', function(playernum, position){
+				socket.on('updatePosition', function(playernum, position, myFood){
 	            	if(playernum == player)
 	            		pos = position;
 	            	else
 	            		enemy = position;
+
+	            	food = myFood;
 	            });
 
 
@@ -323,7 +325,7 @@ $num = $_GET["num"];
 
                        	document.getElementById('canvas');
                        	ctx.clearRect(0, 0, canvas.width, canvas.height);
-                       	socket.emit('updatePlayer', player, pos);
+                       	socket.emit('updatePlayer', player, pos, food);
                        	spawnfood();
 		    			getOn();
 		    			draw();

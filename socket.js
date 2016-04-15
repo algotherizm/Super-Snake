@@ -83,16 +83,16 @@ app.listen(5000);
         socket.emit('updaterooms', rooms, gameRoom, playercount);
     });
 
-    socket.on('updatePlayer', function(player, position){
+    socket.on('updatePlayer', function(player, position, food){
         if(player == 1)
         {
             player1 = position;
-            socket.broadcast.to(socket.room).emit('updatePosition', player, player1);
+            socket.broadcast.to(socket.room).emit('updatePosition', player, player1, food);
         }
         else
         {
             player2 = position;
-            socket.broadcast.to(socket.room).emit('updatePosition', player, player2);
+            socket.broadcast.to(socket.room).emit('updatePosition', player, player2, food);
         }
         //console.log(position);
     });
