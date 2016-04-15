@@ -51,9 +51,7 @@ else
             var socket = io.connect('http://150.252.244.54:5000');
 
             socket.on('connect', function(){
-                var uname = prompt("What's your name: ");
-                console.log(uname);
-                socket.emit('adduser', uname);
+                socket.emit('adduser', "<?php echo $first; ?>");
             });
 
             socket.on('updatechat', function (username, data) {
@@ -124,10 +122,10 @@ else
                         <li role="presentation"><a class="cd-signin" href="logOut.php"> Sign Out</a></li>
                     </ul>
                 </nav>
-                <a href="main.php"><h1 class="text-muted"><span class="glyphicon glyphicon-globe"></span> Super-Snake</h1></a>
+                <a href="main.php"><h1 class="text-muted"><span class="glyphicon glyphicon-globe"></span> Super-Snake LOBBY</h1></a>
             </div>
 
-            <h1>Lobby: Press "Start Game" to play the best snake game ever!</h1>
+            <h2>Join an existing game or create your own!</h2>
 
             <div style="float:left;width:100px;border-right:1px solid black;height:300px;padding:10px;overflow:scroll-y;">
                 <b>ROOMS</b>

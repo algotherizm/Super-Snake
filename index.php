@@ -14,7 +14,7 @@ if(isset($_SESSION['user'])){
 	$result = $link->query("SELECT password FROM users where email='$email'");
 	$row = $result->fetch_assoc();
 	if(($password == $row["password"])&&$password!=''){
-		header('Location: main.php');
+		header('Location: lobby.php');
 	}
 }
 
@@ -50,7 +50,7 @@ if($action == "add_user")
         	print("Adding");
 			$_SESSION["user"] = $email;
 			$_SESSION[$email] = $password;
-            header('Location: main.php');
+            header('Location: lobby.php');
         }
     }
 
@@ -70,7 +70,7 @@ if($action == "add_user")
 			if(($password == $row["password"])&&$password!=''){
 				$_SESSION['user'] = $email;
 				$_SESSION[$email] = $row['password'];
-				header('Location: main.php');
+				header('Location: lobby.php');
 			}else{
 				print("Failed");
 			}
