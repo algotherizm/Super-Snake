@@ -142,6 +142,7 @@ $num = $_GET["num"];
 				var foodexists = false;
 				var score = document.getElementById('score');
 				var new_score = 0;
+				var crash = false;
 				//console.log(canvas.width/block);
 				//console.log(canvas.height/block);
 
@@ -156,7 +157,7 @@ $num = $_GET["num"];
 						ctx.fillRect(x_co,y_co,block,block);
 						ctx.closePath();
 					}
-					for(var x=0; x<pos.length; x++)
+					for(var x=0; x<enemy.length; x++)
 					{
 						var x_co = enemy[x][0]*block;
 						var y_co = enemy[x][1]*block;
@@ -214,11 +215,43 @@ $num = $_GET["num"];
 					}
 				}
 
+				function setEn(en_direction)
+				{
+					switch(en_direction)
+					{
+						case 'left':
+							if(en_old!='right')
+								en_old = en_direction;
+							else
+								en_direction = en_old;
+							break;
+						case 'right':
+							if(en_old!='left')
+								en_old = en_direction;
+							else
+								en_direction = en_old;
+							break;
+						case 'up':
+							if(en_old!='down')
+								en_old = en_direction;
+							else
+								en_direction = en_old;
+							break;
+						case 'down':
+							if(en_old!='up')
+								en_old = en_direction;
+							else
+								en_direction = old_direction;
+							break;
+					}
+				}
+
 				function getOn()
 				{
 					if(!endGame)
 					{
 						setWay(direction);
+						setEn(en_direction);
 						var next = pos[0].slice();
 						switch(old_direction)
 						{
@@ -240,6 +273,27 @@ $num = $_GET["num"];
 						}
 						pos.unshift(next);
 						pos.pop();
+						var en_next = enemy[0].slice();
+						switch(en_old)
+						{
+							case 'left':
+								en_next[0] += -1;
+								break;
+
+							case 'up':
+								en_next[1] += -1;
+								break;
+
+							case 'right':
+								en_next[0] += 1;
+								break;
+
+							case 'down':
+								en_next[1] += 1;
+								break;
+						}
+						enemy.unshift(en_next);
+						enemy.pop();
 					}
 				}
 
@@ -298,6 +352,15 @@ $num = $_GET["num"];
 						wall = true;
 					}
 				}
+				function collideEn()
+				{
+					var head = pos[0];
+					for(var b=0; b<enemy.length; b++)
+					{
+						if(head[0] == enemy[b][0] && head[1] == enemy[b][1])
+							crash = true;
+					}
+				}
 
 				//move automatically every half second
 				setInterval( function () 
@@ -317,7 +380,7 @@ $num = $_GET["num"];
 		    				new_score += 1;
 		    			score.innerHTML = new_score;
 		    			socket.emit('updatePlayer', player, pos);
-		    			if (body || wall)
+		    			if (body || wall || crash)
 		    			{
 		    				if(!notify)
 		    				{
