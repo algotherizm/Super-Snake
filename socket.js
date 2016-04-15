@@ -45,4 +45,12 @@ app.listen(5000);
         socket.broadcast.emit('updatechat', 'SERVER', socket.username + ' has disconnected');
         socket.leave(socket.room);
     });
+
+    socket.on('connectGame', function(username, gameRoom){
+        socket.username = username;
+        socket.room = gameRoom;
+        usernames[username] = username;
+        socket.join(gameRoom);
+        socket.emit('updaterooms', rooms, gameRoom);
+    });
  });

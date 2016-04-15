@@ -48,7 +48,54 @@ else
 		<script type="text/javascript" src="../Super-Snake/js/main.js"/>
 		<script src="http://150.252.244.54:5000/socket.io/socket.io.js"></script>
 		<script>
-	  
+
+		    var socket = io.connect('http://150.252.244.54:5000');
+
+            socket.on('connect', function(){
+                socket.emit('adduser', "<?php echo $first; ?>");
+            });
+
+            socket.on('updatechat', function (username, data) {
+                $('#conversation').append('<b>'+ username + ':</b> ' + data + '<br>');
+            });
+
+
+            socket.on('updaterooms', function (rooms, current_room) {
+                $('#rooms').empty();
+                $.each(rooms, function(key, value) {
+                    if(value == current_room){
+                        $('#rooms').append('<div>' + value + '</div>');
+                    }
+                    else {
+                        $('#rooms').append('<div><a href="#" onclick="switchRoom(\''+value+'\')">' + value + '</a></div>');
+                    }
+                });
+            });
+
+            function switchRoom(room){
+                socket.emit('switchRoom', room);
+            }
+
+            $(function(){
+                $('#datasend').click( function() {
+                    var message = $('#data').val();
+                    $('#data').val('');
+                    socket.emit('sendchat', message);
+                });
+
+                $('#data').keypress(function(e) {
+                    if(e.which == 13) {
+                        $(this).blur();
+                        $('#datasend').focus().click();
+                    }
+                });
+
+                $('#roombutton').click(function(){
+                    var name = $('#roomname').val();
+                    $('#roomname').val('');
+                    socket.emit('create', name)
+                });
+            });
 	  		// better looking modal
 	  		// better lobby
 	  		// fruit in different shapes
