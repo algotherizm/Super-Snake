@@ -96,7 +96,7 @@ else
                 });
 
                 $('#gamebutton').click(function(){
-                    var name = socket.room;
+                    var name = current_room;
                     window.location.href = "main.php?room=" + name;
                 });
             });

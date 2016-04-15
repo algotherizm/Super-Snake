@@ -51,7 +51,7 @@ $room = $_GET["room"];
 		<script src="http://150.252.244.54:5000/socket.io/socket.io.js"></script>
 		<script>
 
-		     bvar socket = io.connect('http://150.252.244.54:5000');
+		    var socket = io.connect('http://150.252.244.54:5000');
 
             socket.on('connect', function(){
                 socket.emit('connectGame', "<?php echo $first; ?>", "<?php echo $room?>");
