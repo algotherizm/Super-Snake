@@ -48,6 +48,7 @@ app.listen(5000);
     socket.on('connectGame', function(username, gameRoom){
         socket.username = username;
         socket.room = gameRoom;
+        console.log(socket.room);
         usernames[username] = username;
         socket.join(gameRoom);
         socket.emit('updaterooms', rooms, gameRoom);

@@ -51,7 +51,7 @@ $room = "Lobby";
 
             var socket = io.connect('http://150.252.244.54:5000');
             var gameRoom = "Lobby";
-
+			
             socket.on('connect', function(){
                 socket.emit('adduser', "<?php echo $first; ?>");
             });
@@ -71,6 +71,7 @@ $room = "Lobby";
                         $('#rooms').append('<div><a href="#" onclick="switchRoom(\''+value+'\')">' + value + '</a></div>');
                     }
                 });
+                
             });
 
             function switchRoom(room){
