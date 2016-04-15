@@ -61,6 +61,7 @@ $num = $_GET["num"];
             		pos = position;
             	else
             		enemy = position;
+            	console.log(enemy[0][0]);
             });
 
             $(function(){
