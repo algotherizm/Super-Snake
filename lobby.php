@@ -40,44 +40,61 @@ else
         <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="../Super-Snake/css/main.css" rel="stylesheet">
         <link href="../Super-Snake/css/modal.css" rel="stylesheet">
-        <link rel="stylesheet" href="../Super-Snake/js/paperjs-v0/examples/css/style.css">
+        <!-- <link rel="stylesheet" href="../Super-Snake/js/paperjs-v0/examples/css/style.css"> -->
         <!--<script type="text/javascript" src="../Super-Snake/js/paperjs-v0/dist/paper-full.js"></script>-->
-        <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script type="text/javascript" src="http://52.10.103.58/node/node_modules/socket.io-client/socket.io.js"/>
-        <script type="text/javascript" src="http://52.10.103.58/Super-Snake/js/main.js"/>
-        <script type="text/paperscript" canvas="canvas"/>
+        <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+        <script src="http://150.252.244.54:5000/socket.io/socket.io.js"></script>
+        <script src="../Super-Snake/js/main.js"></script>
+        <script type="text/paperscript" canvas="canvas"></script>
         <script>
 
-            var socket = io.connect('http://52.10.103.58:5000');
-                
-            var uname = <?php echo $email?>;
-            socket.emit('adduser', uname);
+            var socket = io.connect('http://150.252.244.54:5000');
 
             socket.on('connect', function(){
-                var uname = <?php echo $email?>;
+                var uname = prompt("What's your name: ");
                 console.log(uname);
-                console.log("Connected!");
                 socket.emit('adduser', uname);
             });
 
-            socket.on('updatechat', function (username, data) 
-            {
+            socket.on('updatechat', function (username, data) {
                 $('#conversation').append('<b>'+ username + ':</b> ' + data + '<br>');
             });
 
-            socket.on('updaterooms', function (rooms, current_room)    
-            {
+
+            socket.on('updaterooms', function (rooms, current_room) {
                 $('#rooms').empty();
-                $.each(rooms, function(key, value) 
-                {
-                    if(value == current_room)
-                    {
+                $.each(rooms, function(key, value) {
+                    if(value == current_room){
                         $('#rooms').append('<div>' + value + '</div>');
                     }
-                    else 
-                    {
+                    else {
                         $('#rooms').append('<div><a href="#" onclick="switchRoom(\''+value+'\')">' + value + '</a></div>');
                     }
+                });
+            });
+
+            function switchRoom(room){
+                socket.emit('switchRoom', room);
+            }
+
+            $(function(){
+                $('#datasend').click( function() {
+                    var message = $('#data').val();
+                    $('#data').val('');
+                    socket.emit('sendchat', message);
+                });
+
+                $('#data').keypress(function(e) {
+                    if(e.which == 13) {
+                        $(this).blur();
+                        $('#datasend').focus().click();
+                    }
+                });
+
+                $('#roombutton').click(function(){
+                    var name = $('#roomname').val();
+                    $('#roomname').val('');
+                    socket.emit('create', name)
                 });
             });
        
@@ -111,12 +128,26 @@ else
             </div>
 
             <h1>Lobby: Press "Start Game" to play the best snake game ever!</h1>
-                
-           <footer class="footer">
-                <p>&copy; Connor Smith and Kayla Holcomb 2016</p>
-            </footer>
 
+            <div style="float:left;width:100px;border-right:1px solid black;height:300px;padding:10px;overflow:scroll-y;">
+                <b>ROOMS</b>
+                <div id="rooms"></div>
+            </div>
+
+            <div style="float:left;width:300px;height:250px;overflow:scroll-y;padding:10px;">
+                <div id="conversation"></div>
+                <input id="data" style="width:200px;" />
+                <input type="button" id="datasend" value="send" />
+            </div>
+
+            <div style="float:left;width:300px;height:250px;overflow:scroll-y;padding:10px;">
+                <div id="room creation"></div>
+                <input id="roomname" style="width:200px;" />
+                <input type="button" id="roombutton" value="create room" />
+             </div>
         </div>
-
+       <!--  <footer class="footer">
+            <p>&copy; Connor Smith and Kayla Holcomb 2016</p>
+        </footer> -->
     </body>
 </html>

@@ -1,9 +1,9 @@
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
-<script type="text/javascript" src="http://52.10.103.58/node/node_modules/socket.io-client/socket.io.js"/>
+<script src="http://150.252.244.54:5000/socket.io/socket.io.js"></script>
 <script>
-var socket = io.connect('http://52.10.103.58:5000');
+var socket = io.connect('http://150.252.244.54:5000');
 
 socket.on('connect', function(){
     var uname = prompt("What's your name: ");

@@ -3,7 +3,7 @@ var clients = [];
 var app = require('http').createServer()
 , fs = require('fs')
 , io = require('socket.io').listen(app);
-
+console.log("socket is running");
 //http://stackoverflow.com/questions/19156636/node-js-and-socket-io-creating-room
 var usernames = {};
 var rooms = ['Lobby'];
