@@ -133,7 +133,7 @@ $room = "Lobby";
             <div class="header">
                 <nav>
                     <ul class="main-nav nav nav-pills pull-right">
-                        <li role="presentation"><a class="cd-signin" href="main.php" > Start Single-Player Game</a></li>
+                        <li role="presentation"><a class="cd-signin" href="single.php" > Start Single-Player Game</a></li>
                         <li role="presentation"><a class="cd-signin" href="logOut.php"> Sign Out</a></li>
                     </ul>
                 </nav>
