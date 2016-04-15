@@ -96,4 +96,11 @@ app.listen(5000);
         }
         //console.log(position);
     });
+
+    socket.on('gameOver', function(player){
+        if(player == 1)
+            socket.braodcast.to(socket.room).emit('Winner', 2);
+        else
+            socket.braodcast.to(socket.room).emit('Winner', 1);
+    });
  });

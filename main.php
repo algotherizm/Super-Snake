@@ -340,7 +340,7 @@ $num = $_GET["num"];
 		    				{
 		    					endGame = true;
 		    					location.href = "#"; //fix later
-		    					alert("Game Over. Your Score is: " + new_score);
+		    					socket.emit('gameOver', playernum);
 		    					notify = true;
 		    				}
 		    			}
@@ -379,6 +379,15 @@ $num = $_GET["num"];
 	    		}
 
 				draw();
+
+				socket.on('Winner', function(player)
+				{
+					endgame = true;
+					if(player == playernum)
+						alert('You win!!');
+					else
+						alert('You Lose.');
+				});
 			}
 
 		</script>
