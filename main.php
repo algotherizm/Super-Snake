@@ -42,17 +42,14 @@ $num = $_GET["num"];
 	    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 	    <link href="../Super-Snake/css/main.css" rel="stylesheet">
 	   	<link href="../Super-Snake/css/modal.css" rel="stylesheet">
-<!-- 	    <link rel="stylesheet" href="../Super-Snake/js/paperjs-v0/examples/css/style.css">
- -->		<!--<script type="text/javascript" src="../Super-Snake/js/paperjs-v0/dist/paper-full.js"></script>-->
 		<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
-		<!--<script src="http://150.252.244.54:5000/socket.io/socket.io.js"></script>-->
-		<script src="http://150.252.245.114:5000/socket.io/socket.io.js"></script>
+		<script src="http://150.252.244.124:5000/socket.io/socket.io.js"></script>
         <script src="../Super-Snake/js/main.js"></script>
         <script type="text/paperscript" canvas="canvas"></script>
         <script>
 
 		    //var socket = io.connect('http://150.252.244.54:5000');
-		    var socket = io.connect('http://150.252.245.114:5000');
+		    var socket = io.connect('http://150.252.244.124:5000');
 		    var player = "<?php echo $num?>";
 
             socket.on('connect', function(){
