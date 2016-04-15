@@ -94,6 +94,11 @@ else
                     $('#roomname').val('');
                     socket.emit('create', name)
                 });
+
+                $('#gamebutton').click(function(){
+                    var name = socket.room;
+                    window.location.href = "main.php?room=" + name;
+                });
             });
        
             // END GAME MODAL
@@ -118,7 +123,7 @@ else
             <div class="header">
                 <nav>
                     <ul class="main-nav nav nav-pills pull-right">
-                        <li role="presentation"><a class="cd-signin" href="main.php"> Start Game</a></li>
+                        <li role="presentation"><a class="cd-signin" href="main.php" > Start Single-Player Game</a></li>
                         <li role="presentation"><a class="cd-signin" href="logOut.php"> Sign Out</a></li>
                     </ul>
                 </nav>
@@ -142,6 +147,11 @@ else
                 <div id="room creation"></div>
                 <input id="roomname" style="width:200px;" />
                 <input type="button" id="roombutton" value="create room" />
+             </div>
+
+            <div style="float:left;width:500px;height:250px;overflow:scroll-y;padding:10px;">
+                <div id="joingame"></div>
+                <input type="button" id="gamebutton" value="Start Game" />
              </div>
         </div>
        <!--  <footer class="footer">

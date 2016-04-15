@@ -32,6 +32,8 @@ if(isset($_REQUEST["action"]))
 else
 	$action = "none";
 
+$room = $_GET["room"];
+
 ?>
 
 <html lang="en">
@@ -49,10 +51,10 @@ else
 		<script src="http://150.252.244.54:5000/socket.io/socket.io.js"></script>
 		<script>
 
-		    var socket = io.connect('http://150.252.244.54:5000');
+		     bvar socket = io.connect('http://150.252.244.54:5000');
 
             socket.on('connect', function(){
-                socket.emit('adduser', "<?php echo $first; ?>");
+                socket.emit('connectGame', "<?php echo $first; ?>", "<?php echo $room?>");
             });
 
             socket.on('updatechat', function (username, data) {
@@ -370,13 +372,25 @@ else
 	        <h2 id="score" style="display:inline">0</h2>
 			<canvas id="canvas" resize style="border:1px solid #000000";></canvas>
 
-        <div id="sign-in-modal" class="sign-in-modal">
-          	<div class="sign-in-modal-container">
+        	<div id="sign-in-modal" class="sign-in-modal">
+          		<div class="sign-in-modal-container">
                     <button type="button" class="btn btn-default" href="#" onclick="window.location.reload(true);">New Game</button>
                     <button type="button" class="btn btn-default" onclick="window.location.assign('http://52.10.103.58/Super-Snake/lobby.php');" href="lobby.php">Return to Lobby</button>
+            	</div>
+        	</div>
+
+        	<div style="float:left;width:100px;border-right:1px solid black;height:300px;padding:10px;overflow:scroll-y;">
+                <b>ROOMS</b>
+                <div id="rooms"></div>
             </div>
-          </div>
-           <footer class="footer">
+
+            <div style="float:left;width:300px;height:250px;overflow:scroll-y;padding:10px;">
+                <div id="conversation"></div>
+                <input id="data" style="width:200px;" />
+                <input type="button" id="datasend" value="send" />
+            </div>
+
+           	<footer class="footer">
 	            <p>&copy; Connor Smith and Kayla Holcomb 2016</p>
 	        </footer>
 
