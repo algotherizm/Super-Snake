@@ -32,6 +32,7 @@ if(isset($_REQUEST["action"]))
 else
     $action = "none";
 
+$room = "Lobby";
 ?>
 
 <html lang="en">
@@ -73,6 +74,7 @@ else
 
             function switchRoom(room){
                 socket.emit('switchRoom', room);
+                <?php "$room"?> = room;
             }
 
             $(function(){
@@ -96,7 +98,6 @@ else
                 });
 
                 $('#gamebutton').click(function(){
-                    var name = current_room;
                     window.location.href = "main.php?room=" + name;
                 });
             });
