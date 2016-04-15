@@ -89,6 +89,6 @@ app.listen(5000);
         else
             player2 = position;
         //console.log(position);
-        socket.broadcast.emit('updatePosition', player, position);
+        socket.broadcast.to(socket.room).emit('updatePosition', player, position);
     });
  });
