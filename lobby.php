@@ -44,13 +44,16 @@ $room = "Lobby";
         <!-- <link rel="stylesheet" href="../Super-Snake/js/paperjs-v0/examples/css/style.css"> -->
         <!--<script type="text/javascript" src="../Super-Snake/js/paperjs-v0/dist/paper-full.js"></script>-->
         <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
-        <script src="http://150.252.244.54:5000/socket.io/socket.io.js"></script>
+        <!--<script src="http://150.252.244.54:5000/socket.io/socket.io.js"></script>-->
+        <script src="http://150.252.245.114:5000/socket.io/socket.io.js"></script>
         <script src="../Super-Snake/js/main.js"></script>
         <script type="text/paperscript" canvas="canvas"></script>
         <script>
 
-            var socket = io.connect('http://150.252.244.54:5000');
+            //var socket = io.connect('http://150.252.244.54:5000');
+            var socket = io.connect('http://150.252.245.114:5000');
             var gameRoom = "Lobby";
+            var playernumber = 3;
 			
             socket.on('connect', function(){
                 socket.emit('adduser', "<?php echo $first; ?>");
@@ -61,11 +64,15 @@ $room = "Lobby";
             });
 
 
-            socket.on('updaterooms', function (rooms, current_room) {
+            socket.on('updaterooms', function (rooms, current_room, room_count, playernum) {
                 $('#rooms').empty();
+                var x=0;
+                playernumber = playernum;
+                console.log(playernumber);
                 $.each(rooms, function(key, value) {
                     if(value == current_room){
                         $('#rooms').append('<div>' + value + '</div>');
+                    x++;
                     }
                     else {
                         $('#rooms').append('<div><a href="#" onclick="switchRoom(\''+value+'\')">' + value + '</a></div>');
@@ -100,7 +107,7 @@ $room = "Lobby";
                 });
 
                 $('#gamebutton').click(function(){
-                    window.location.href = "main.php?room=" + gameRoom;
+                    window.location.href = "main.php?room=" + gameRoom + "&num=" + playernumber;
                 });
             });
        
@@ -152,7 +159,7 @@ $room = "Lobby";
                 <input type="button" id="roombutton" value="Create New Game" />
              </div>
 
-            <div style="float:left;width:500px;height:250px;overflow:scroll-y;padding:10px;">
+            <div style="width:500px;height:250px;overflow:scroll-y;padding:10px;">
                 <div id="joingame"></div>
                 <input type="button" id="gamebutton" value="Start Game" />
              </div>

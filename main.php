@@ -33,7 +33,7 @@ else
 	$action = "none";
 
 $room = $_GET["room"];
-
+$num = $_GET["num"];
 ?>
 
 <html lang="en">
@@ -45,37 +45,26 @@ $room = $_GET["room"];
 <!-- 	    <link rel="stylesheet" href="../Super-Snake/js/paperjs-v0/examples/css/style.css">
  -->		<!--<script type="text/javascript" src="../Super-Snake/js/paperjs-v0/dist/paper-full.js"></script>-->
 		<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
-		<script src="http://150.252.244.54:5000/socket.io/socket.io.js"></script>
+		<!--<script src="http://150.252.244.54:5000/socket.io/socket.io.js"></script>-->
+		<script src="http://150.252.245.114:5000/socket.io/socket.io.js"></script>
         <script src="../Super-Snake/js/main.js"></script>
         <script type="text/paperscript" canvas="canvas"></script>
         <script>
 
-		    var socket = io.connect('http://150.252.244.54:5000');
+		    //var socket = io.connect('http://150.252.244.54:5000');
+		    var socket = io.connect('http://150.252.245.114:5000');
+		    var player = "<?php echo $num?>";
 
             socket.on('connect', function(){
                 socket.emit('connectGame', "<?php echo $first; ?>", "<?php echo $room?>");
             });
 
-            socket.on('updatechat', function (username, data) {
-                $('#conversation').append('<b>'+ username + ':</b> ' + data + '<br>');
+            socket.on('updatePosition', function(playernum, position){
+            	if(playernum == player)
+            		pos = position;
+            	else
+            		enemy = position;
             });
-
-
-            socket.on('updaterooms', function (rooms, current_room) {
-                $('#rooms').empty();
-                $.each(rooms, function(key, value) {
-                    if(value == current_room){
-                        $('#rooms').append('<div>' + value + '</div>');
-                    }
-                    else {
-                        $('#rooms').append('<div><a href="#" onclick="switchRoom(\''+value+'\')">' + value + '</a></div>');
-                    }
-                });
-            });
-
-            function switchRoom(room){
-                socket.emit('switchRoom', room);
-            }
 
             $(function(){
                 $('#datasend').click( function() {
@@ -110,11 +99,8 @@ $room = $_GET["room"];
 	   		// carry over to the other side of the screen
 	   		// choose colors for multiplayer
 	   		
-	    </script>
-
-	    <script>
-	    //lots of code from: http://codereview.stackexchange.com/questions/55323/snake-game-with-canvas-element-code
-	    //Much of the code is adapted from that site
+			//code from: http://codereview.stackexchange.com/questions/55323/snake-game-with-canvas-element-code
+	    	//Much of the code is adapted from that site
 			function game()
 			{
 
@@ -127,9 +113,28 @@ $room = $_GET["room"];
 					39: 'right',
 					40: 'down'
 				};
-				var pos = [[5,1],[4,1],[3,1],[2,1],[1,1]];
-				var direction = 'right';
-				var old_direction = 'right';
+				var pos;
+				var direction;
+				var old_direction;
+				var enemy;
+				var en_direction;
+				var en_old;
+				if(player == 1){
+					pos = [[5,1],[4,1],[3,1],[2,1],[1,1]];
+					direction = "right";
+					old_direction = "right";
+					enemy = [[20,14], [21,14], [22,14], [23,14], [24,14]];
+					en_direction = "left";
+					en_old = "left";
+				}
+				else{
+					pos = [[20,13], [21,13], [22,13], [23,13], [24,13]];
+					direction = "left";
+					old_direction = "left";
+					enemy = [[5,1],[4,1],[3,1],[2,1],[1,1]];
+					en_direction = "right";
+					en_old = "right";
+				}
 				var block = 10;
 				var endGame = false;
 				var body = false;
@@ -140,8 +145,8 @@ $room = $_GET["room"];
 				var foodexists = false;
 				var score = document.getElementById('score');
 				var new_score = 0;
-				console.log(canvas.width/block);
-				console.log(canvas.height/block);
+				//console.log(canvas.width/block);
+				//console.log(canvas.height/block);
 
 				function draw()
 				{
@@ -154,6 +159,16 @@ $room = $_GET["room"];
 						ctx.fillRect(x_co,y_co,block,block);
 						ctx.closePath();
 					}
+					for(var x=0; x<pos.length; x++)
+					{
+						var x_co = enemy[x][0]*block;
+						var y_co = enemy[x][1]*block;
+						ctx.beginPath();
+						ctx.fillStyle = 'green';
+						ctx.fillRect(x_co,y_co,block,block);
+						ctx.closePath();
+					}
+					ctx.fillStyle = 'black';
 				}
 
 				window.onkeydown = function(event)
@@ -304,6 +319,7 @@ $room = $_GET["room"];
 		    			if(!endGame)
 		    				new_score += 1;
 		    			score.innerHTML = new_score;
+		    			socket.emit('updatePlayer', player, pos);
 		    			if (body || wall)
 		    			{
 		    				if(!notify)

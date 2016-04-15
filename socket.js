@@ -5,6 +5,8 @@ var app = require('http').createServer(), fs = require('fs'), io = require('sock
 //http://stackoverflow.com/questions/19156636/node-js-and-socket-io-creating-room
 var usernames = {};
 var rooms = ['Lobby'];
+var player1 = [];
+var player2 = [];
 // creating the server ( localhost:5000 )
 app.listen(5000);
  io.sockets.on('connection', function(socket) {
