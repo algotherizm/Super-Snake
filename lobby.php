@@ -138,7 +138,7 @@ else
                 <input type="button" id="datasend" value="send" />
             </div>
 
-            <div style="float:left;width:300px;height:250px;overflow:scroll-y;padding:10px;">
+            <div style="float:left;width:500px;height:250px;overflow:scroll-y;padding:10px;">
                 <div id="room creation"></div>
                 <input id="roomname" style="width:200px;" />
                 <input type="button" id="roombutton" value="create room" />

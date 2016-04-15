@@ -1,7 +1,6 @@
 // Require dependencies
 var clients = [];
 var app = require('http').createServer(), fs = require('fs'), io = require('socket.io').listen(app);
-console.log('socket is running');
 
 //http://stackoverflow.com/questions/19156636/node-js-and-socket-io-creating-room
 var usernames = {};
@@ -10,7 +9,6 @@ var rooms = ['Lobby'];
 app.listen(5000);
  io.sockets.on('connection', function(socket) {
   socket.on('adduser', function (username) {
-        console.log("Adding User...");
         socket.username = username;
         socket.room = 'Lobby';         
         usernames[username] = username;
