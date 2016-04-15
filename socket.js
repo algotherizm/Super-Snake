@@ -20,6 +20,7 @@ app.listen(5000);
   socket.on('create', function(room) {
         rooms.push(room);
         socket.emit('updaterooms', rooms, socket.room);
+        socket.broadcast.to('Lobby').emit('updaterooms', rooms, socket.room);
     });
   socket.on('sendchat', function(data) {
         io.sockets["in"](socket.room).emit('updatechat', socket.username, data);
