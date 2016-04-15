@@ -56,14 +56,6 @@ $num = $_GET["num"];
                 socket.emit('connectGame', "<?php echo $first; ?>", "<?php echo $room?>");
             });
 
-            socket.on('updatePosition', function(playernum, position){
-            	if(playernum == player)
-            		pos = position;
-            	else
-            		enemy = position;
-            	console.log(enemy[0][0]);
-            });
-
             $(function(){
                 $('#datasend').click( function() {
                     var message = $('#data').val();
@@ -158,6 +150,11 @@ $num = $_GET["num"];
 						ctx.fillRect(x_co,y_co,block,block);
 						ctx.closePath();
 					}
+					ctx.fillStyle = 'black';
+				}
+
+				function drawEnemy()
+				{
 					for(var x=0; x<enemy.length; x++)
 					{
 						var x_co = enemy[x][0]*block;
@@ -169,6 +166,14 @@ $num = $_GET["num"];
 					}
 					ctx.fillStyle = 'black';
 				}
+
+				socket.on('updatePosition', function(playernum, position){
+	            	if(playernum == player)
+	            		pos = position;
+	            	else
+	            		enemy = position;
+	            });
+
 
 				window.onkeydown = function(event)
 				{
@@ -216,43 +221,11 @@ $num = $_GET["num"];
 					}
 				}
 
-				function setEn(en_direction)
-				{
-					switch(en_direction)
-					{
-						case 'left':
-							if(en_old!='right')
-								en_old = en_direction;
-							else
-								en_direction = en_old;
-							break;
-						case 'right':
-							if(en_old!='left')
-								en_old = en_direction;
-							else
-								en_direction = en_old;
-							break;
-						case 'up':
-							if(en_old!='down')
-								en_old = en_direction;
-							else
-								en_direction = en_old;
-							break;
-						case 'down':
-							if(en_old!='up')
-								en_old = en_direction;
-							else
-								en_direction = old_direction;
-							break;
-					}
-				}
-
 				function getOn()
 				{
 					if(!endGame)
 					{
 						setWay(direction);
-						setEn(en_direction);
 						var next = pos[0].slice();
 						switch(old_direction)
 						{
@@ -274,27 +247,6 @@ $num = $_GET["num"];
 						}
 						pos.unshift(next);
 						pos.pop();
-						var en_next = enemy[0].slice();
-						switch(en_old)
-						{
-							case 'left':
-								en_next[0] += -1;
-								break;
-
-							case 'up':
-								en_next[1] += -1;
-								break;
-
-							case 'right':
-								en_next[0] += 1;
-								break;
-
-							case 'down':
-								en_next[1] += 1;
-								break;
-						}
-						enemy.unshift(en_next);
-						enemy.pop();
 					}
 				}
 
@@ -371,16 +323,17 @@ $num = $_GET["num"];
 
                        	document.getElementById('canvas');
                        	ctx.clearRect(0, 0, canvas.width, canvas.height);
+                       	socket.emit('updatePlayer', player, pos);
                        	spawnfood();
 		    			getOn();
 		    			draw();
+		    			drawEnemy();
 		    			collideWall();
 		    			collideBody();
 		    			noms();
 		    			if(!endGame)
 		    				new_score += 1;
 		    			score.innerHTML = new_score;
-		    			socket.emit('updatePlayer', player, pos);
 		    			if (body || wall || crash)
 		    			{
 		    				if(!notify)

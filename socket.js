@@ -85,10 +85,15 @@ app.listen(5000);
 
     socket.on('updatePlayer', function(player, position){
         if(player == 1)
+        {
             player1 = position;
+            socket.broadcast.to(socket.room).emit('updatePosition', player, player1);
+        }
         else
+        {
             player2 = position;
+            socket.broadcast.to(socket.room).emit('updatePosition', player, player2);
+        }
         //console.log(position);
-        socket.broadcast.to(socket.room).emit('updatePosition', player, position);
     });
  });
