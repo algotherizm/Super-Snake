@@ -50,6 +50,7 @@ $room = "Lobby";
         <script>
 
             var socket = io.connect('http://150.252.244.54:5000');
+            var gameRoom = "Lobby";
 
             socket.on('connect', function(){
                 socket.emit('adduser', "<?php echo $first; ?>");
@@ -74,7 +75,7 @@ $room = "Lobby";
 
             function switchRoom(room){
                 socket.emit('switchRoom', room);
-                <?php "$room"?> = room;
+                gameRoom = room;
             }
 
             $(function(){
@@ -98,7 +99,7 @@ $room = "Lobby";
                 });
 
                 $('#gamebutton').click(function(){
-                    window.location.href = "main.php?room=" + name;
+                    window.location.href = "main.php?room=" + gameRoom;
                 });
             });
        

@@ -257,7 +257,7 @@ $room = $_GET["room"];
 								break;
 						}
 
-						pos.unshift(next);
+						pos.push(next);
 					}
 				}
 
@@ -285,7 +285,6 @@ $room = $_GET["room"];
 					if(head[0]>walls.right || head[0]<walls.left || head[1]<walls.up || head[1]>walls.down)
 					{
 						wall = true;
-						console.log(walls.right);
 					}
 				}
 
@@ -345,7 +344,6 @@ $room = $_GET["room"];
 	    				ctx.clearRect(food[0],food[1],block,block);
 	    				foodexists=false;
 	    				auto();
-	    				console.log(pos.length);
 	    				new_score += 100;
 	    				score.innerHTML = new_score;
 	    			}
