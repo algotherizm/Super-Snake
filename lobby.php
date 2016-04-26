@@ -45,13 +45,13 @@ $room = "Lobby";
         <!--<script type="text/javascript" src="../Super-Snake/js/paperjs-v0/dist/paper-full.js"></script>-->
         <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
         <!--<script src="http://150.252.244.54:5000/socket.io/socket.io.js"></script>-->
-        <script src="http://150.252.245.114:5000/socket.io/socket.io.js"></script>
+        <script src="http://150.252.244.124:5000/socket.io/socket.io.js"></script>
         <script src="../Super-Snake/js/main.js"></script>
         <script type="text/paperscript" canvas="canvas"></script>
         <script>
 
             //var socket = io.connect('http://150.252.244.54:5000');
-            var socket = io.connect('http://150.252.245.114:5000');
+            var socket = io.connect('http://150.252.244.124:5000');
             var gameRoom = "Lobby";
             var playernumber = 3;
 			
@@ -62,7 +62,6 @@ $room = "Lobby";
             socket.on('updatechat', function (username, data) {
                 $('#conversation').append('<b>'+ username + ':</b> ' + data + '<br>');
             });
-
 
             socket.on('updaterooms', function (rooms, current_room, room_count, playernum) {
                 $('#rooms').empty();
@@ -103,7 +102,7 @@ $room = "Lobby";
                 $('#roombutton').click(function(){
                     var name = $('#roomname').val();
                     $('#roomname').val('');
-                    socket.emit('create', name)
+                    socket.emit('create', name);
                 });
 
                 $('#gamebutton').click(function(){
